@@ -1,0 +1,135 @@
+* {
+    text-decoration: none;
+    list-style: none;
+    // border: 1px solid green;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #333;
+  }
+
+  p {
+    color: #8d8d8d;
+  }
+
+  .v-btn {
+    text-transform: none !important;
+    font-weight: 500 !important;
+  }
+
+  li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
+  
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .row {
+    margin: 0;
+  }
+  
+  
+  
+  html {
+    font-size: 14px !important;
+  }
+  
+  @media screen and (min-width: $md) {
+    html {
+      font-size: 15px !important;
+    }
+  }
+  @media screen and (min-width: $lg) {
+    html {
+      font-size: 16px !important;
+    }
+  
+ 
+  
+    // p {
+    // 	margin-bottom: 1rem;
+    // }
+  
+    // h1,
+    // h2,
+    // h3,
+    // h4,
+    // h5 {
+    // 	margin: 3rem 0 1.38rem;
+    // 	font-family: 'Hanken Grotesk', sans-serif;
+    // }
+  }
+  
+  .fs-4xl,
+  .fs-3xl,
+  .fs-2xl,
+  .fs-xl,
+  .fs-lg,
+  .fs-md,
+  .fs-base,
+  .fs-sm,
+  .fs-xs,
+  .fs-caption {
+    // font-weight: 400;
+    line-height: 1.3;
+    // color: #000000;
+  }
+  
+  .fs-6xl {
+    font-size: $fs-6xl;
+  }
+  .fs-5xl {
+    font-size: $fs-5xl;
+  }
+  .fs-4xl {
+    font-size: $fs-4xl;
+  }
+  
+  .fs-3xl {
+    font-size: $fs-3xl;
+  }
+  
+  .fs-2xl {
+    font-size: $fs-2xl;
+  }
+  
+  .fs-xl {
+    font-size: $fs-xl;
+  }
+  
+  .fs-lg {
+    font-size: $fs-lg;
+  }
+  
+  .fs-md {
+    font-size: $fs-md;
+  }
+  
+  .fs-base {
+    font-size: $fs-base;
+  }
+  
+  .fs-sm {
+    font-size: $fs-sm;
+  }
+  
+  .fs-xs {
+    font-size: $fs-xs;
+  }
+  
+  .fs-caption {
+    font-size: $fs-caption;
+  }

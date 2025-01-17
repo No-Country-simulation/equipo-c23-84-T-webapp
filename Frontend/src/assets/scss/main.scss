@@ -1,0 +1,29 @@
+@import "partials/_my-variabls.scss";
+@import "partials/_reset.scss";
+
+.page-title {
+    font-size: $fs-5xl;
+    font-weight: 700;
+}
+
+.v-container {
+    max-width: 97% !important;
+    margin: 0 auto;
+    max-width: 1600px !important;
+}
+
+@media screen and (min-width: $sm) {
+    .v-container {
+        max-width: 95% !important;
+    }
+}
+@media screen and (min-width: $lg) {
+    .v-container {
+        max-width: 85% !important;
+    }
+}
+@media screen and (min-width: $xl) {
+    .v-container {
+        max-width: 70% !important;
+    }
+}
