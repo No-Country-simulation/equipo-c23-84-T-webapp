@@ -7,7 +7,7 @@ import TheHeader from "@/components/TheHeader.vue";
   <VLayout ref="app">
     <TheHeader />
 
-    <VMain class="bg-grey-lighten-5">
+    <VMain class="">
       <div class="">
         <RouterView></RouterView>
       </div>
@@ -18,6 +18,9 @@ import TheHeader from "@/components/TheHeader.vue";
   </VLayout>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+main {
+  background-color: $light-gray;
+}
 
 </style>

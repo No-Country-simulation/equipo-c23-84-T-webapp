@@ -4,7 +4,7 @@ import TheHeader from "@/components/TheHeader.vue";
 
 <template>
   <VLayout ref="app">
-    <TheHeader />
+    <TheHeader :show-nav="false" />
 
     <VMain class="bg-grey-lighten-5">
       <div class="">
