@@ -2,8 +2,7 @@
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 
 import './assets/scss/main.scss'
-import "v-slick-carousel/style.css";
-
+import 'v-slick-carousel/style.css'
 
 // import "sweetalert2/dist/sweetalert2.min.css"; // Estilos base
 // import "sweetalert2-theme-dark/dark.css"; // Tema que deseas usar
@@ -20,7 +19,6 @@ import pinia from './stores/pinia'
 
 import VueSocialSharing from 'vue-social-sharing'
 
-
 import App from './App.vue'
 import router from './router'
 
@@ -28,35 +26,35 @@ const app = createApp(App)
 
 // Vuetify
 const vuetify = createVuetify({
-    components,
-    directives,
-    icons: {
-        defaultSet: 'mdi',
-    },
-    display: {
-      mobileBreakpoint: 'md',
-    },
-    theme: {
-      defaultTheme: 'light',
-      themes: {
-        light: {
-          colors: {
-            primary: '#3eb1c2',
-            secondary: '#163d86',
-            accent: '#82B1FF',
-            error: '#FF5252',
-            info: '#2196F3',
-            success: '#4CAF50',
-            warning: '#FFC107',
-          },
-        },
-      },
+  components,
+  directives,
+  icons: {
+    defaultSet: 'mdi'
+  },
+  display: {
+    mobileBreakpoint: 'md'
+  },
+  theme: {
+    defaultTheme: 'light',
+    themes: {
+      light: {
+        colors: {
+          primary: '#FF8C42',
+          secondary: '#66CDAA',
+          accent: '#FA4C4C',
+          error: '#FF5252',
+          info: '#2196F3',
+          success: '#4CAF50',
+          warning: '#FFC107'
+        }
+      }
     }
+  }
 })
 
 app.use(pinia)
 app.use(router)
 app.use(vuetify)
-app.use(VueSocialSharing);
+app.use(VueSocialSharing)
 
 app.mount('#app')
