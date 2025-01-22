@@ -5,9 +5,15 @@ HELP.md
 
 
 ### IntelliJ IDEA ###
-
+.idea/
+*.iml
+*.run.xml
 
 ### NetBeans ###
 
 
 ### VS Code ###
+.vscode/
+
+# Configuración de entornos locales
+.env
