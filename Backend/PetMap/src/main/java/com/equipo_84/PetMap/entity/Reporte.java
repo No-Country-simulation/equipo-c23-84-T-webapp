@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Entity
 public class Reporte {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne
     private Usuario usuario;
