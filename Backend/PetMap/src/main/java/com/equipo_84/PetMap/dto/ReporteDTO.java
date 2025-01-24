@@ -1,5 +1,6 @@
 package com.equipo_84.PetMap.dto;
 
+import com.equipo_84.PetMap.entity.Usuario;
 import com.equipo_84.PetMap.entity.enums.TipoReporte;
 import com.equipo_84.PetMap.util.Errors;
 import jakarta.validation.constraints.NotBlank;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 public class ReporteDTO {
 
     @NotBlank(message = Errors.VACIO)
-    private long UserId;
+    private Usuario usuario;
 
     private TipoReporte tipo;
     private String ubicacion;

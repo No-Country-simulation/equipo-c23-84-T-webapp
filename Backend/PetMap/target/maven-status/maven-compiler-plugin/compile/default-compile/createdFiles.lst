@@ -1,4 +1,14 @@
-com\equipo_84\PetMap\PetMapApplication.class
-com\equipo_84\PetMap\entity\Usuario.class
-com\equipo_84\PetMap\entity\Mascota.class
 com\equipo_84\PetMap\entity\Reporte.class
+com\equipo_84\PetMap\entity\enums\Rol.class
+com\equipo_84\PetMap\service\reporteService\IReporteService.class
+com\equipo_84\PetMap\entity\Usuario.class
+com\equipo_84\PetMap\repository\IReporteRepository.class
+com\equipo_84\PetMap\entity\Mascota.class
+com\equipo_84\PetMap\service\mascotaService\MascotaService.class
+com\equipo_84\PetMap\dto\MascotaDTO.class
+com\equipo_84\PetMap\entity\enums\TipoReporte.class
+com\equipo_84\PetMap\service\mascotaService\IMascotaService.class
+com\equipo_84\PetMap\repository\IMascotaRepository.class
+com\equipo_84\PetMap\dto\ReporteDTO.class
+com\equipo_84\PetMap\PetMapApplication.class
+com\equipo_84\PetMap\controller\MascotaController.class

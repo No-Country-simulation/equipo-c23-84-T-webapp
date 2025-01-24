@@ -11,4 +11,5 @@ public class Errors {
     public static final String CONTRSENA_INVALIDA = "La contraseña ingresada no es valida";
 
     public static final String FECHA_INVALIDA = "La fecha debe ser hoy o una fecha pasada";
+    public static final String REPORT_NOT_FOUND = "No existe un reporte con ID: %d\n";
 }
