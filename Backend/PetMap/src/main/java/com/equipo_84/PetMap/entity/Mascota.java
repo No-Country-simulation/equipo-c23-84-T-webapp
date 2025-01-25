@@ -50,4 +50,9 @@ public class Mascota {
 
     @OneToOne(targetEntity = Reporte.class, mappedBy = "mascota")
     private Reporte reporte;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
 }
