@@ -24,48 +24,49 @@ public class ReporteController {
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<Reporte> guardarReporte(@Valid @RequestBody ReporteDTO reporteDTO) {
-        Reporte reporte = reporteService.guardarReporte(reporteDTO);
+    public ResponseEntity<ReporteDTO> guardarReporte(@Valid @RequestBody ReporteDTO reporteDTO) {
+        ReporteDTO reporte = reporteService.guardarReporte(reporteDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(reporte);
     }
 
     @GetMapping("/traer")
-    public ResponseEntity<List<Reporte>> listarReportes() {
-        List<Reporte> reportes = reporteService.listarReportes();
+    public ResponseEntity<List<ReporteDTO>> listarReportes() {
+        List<ReporteDTO> reportes = reporteService.listarReportes();
         return ResponseEntity.ok(reportes);
     }
 
-    @GetMapping("/traer/{id}")
-    public ResponseEntity<Reporte> reporteXid(@PathVariable Long id) {
-        Reporte reporte = reporteService.reporteXid(id);
+    @GetMapping("traer/{id}/")
+    public ResponseEntity<ReporteDTO> reporteXid(@PathVariable Long id) {
+        ReporteDTO reporte = reporteService.reporteXid(id);
         if (reporte == null) {
             return ResponseEntity.notFound().build();  // 404 Not Found
         }
         return ResponseEntity.ok(reporte);  // 200 OK
     }
 
-    @GetMapping("/tipo/{tipo}")
-    public ResponseEntity<List<Reporte>> reportesXtipo(@PathVariable TipoReporte tipoReporte) {
-        List<Reporte> reportes = reporteService.reportesXtipo(tipoReporte);
+    @GetMapping("/tipo/{tipoReporte}")
+    public ResponseEntity<List<ReporteDTO>> reportesXtipo(@PathVariable TipoReporte tipoReporte) {
+        List<ReporteDTO> reportes = reporteService.reportesXtipo(tipoReporte);
         return ResponseEntity.ok(reportes);
     }
 
     @GetMapping("/ubicacion/{ubicacion}")
-    public ResponseEntity<List<Reporte>> reportesXubicacion(@PathVariable String ubicacion) {
-        List<Reporte> reportes = reporteService.reportesXubicacion(ubicacion);
+    public ResponseEntity<List<ReporteDTO>> reportesXubicacion(@PathVariable String ubicacion) {
+        List<ReporteDTO> reportes = reporteService.reportesXubicacion(ubicacion);
         return ResponseEntity.ok(reportes);
     }
 
     @GetMapping("/fecha/{fecha}")
-    public ResponseEntity<List<Reporte>> reportesXfecha(
+    public ResponseEntity<List<ReporteDTO>> reportesXfecha(
             @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
-        List<Reporte> reportes = reporteService.reportesXfecha(fecha);
+        List<ReporteDTO> reportes = reporteService.reportesXfecha(fecha);
         return ResponseEntity.ok(reportes);
     }
 
     @PutMapping("/editar/{id}")
-    public ResponseEntity<Reporte> editarReporte(@Valid @RequestBody Reporte reporte) {
-        Reporte reporteEditado = reporteService.editarReporte(reporte);
+    public ResponseEntity<ReporteDTO> editarReporte(@PathVariable Long id,
+                                                    @Valid @RequestBody ReporteDTO reporte) {
+        ReporteDTO reporteEditado = reporteService.editarReporte(id,reporte);
         if (reporteEditado == null) {
             return ResponseEntity.notFound().build();
         }

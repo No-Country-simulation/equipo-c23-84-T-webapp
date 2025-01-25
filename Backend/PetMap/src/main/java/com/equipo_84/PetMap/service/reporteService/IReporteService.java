@@ -9,19 +9,19 @@ import java.util.List;
 
 public interface IReporteService {
 
-    public Reporte guardarReporte(ReporteDTO reporteDTO);
+    public ReporteDTO guardarReporte(ReporteDTO reporteDTO);
 
-    public List <Reporte> listarReportes();
+    public List<ReporteDTO> listarReportes();
 
-    public Reporte reporteXid(Long id);
+    public ReporteDTO reporteXid(Long id);
 
-    public List<Reporte> reportesXtipo(TipoReporte tipoReporte);
+    public List<ReporteDTO> reportesXtipo(TipoReporte tipoReporte);
 
-    public List<Reporte> reportesXubicacion(String ubicacion);
+    public List<ReporteDTO> reportesXubicacion(String ubicacion);
 
-    public List<Reporte> reportesXfecha(LocalDate fecha);
+    public List<ReporteDTO> reportesXfecha(LocalDate fecha);
 
-    public Reporte editarReporte(Reporte reporte);
+    public ReporteDTO editarReporte(Long id, ReporteDTO reporte);
 
     public boolean borrarReporte(Long id);
 

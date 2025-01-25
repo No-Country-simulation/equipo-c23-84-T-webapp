@@ -13,18 +13,21 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ReporteDTO {
 
-    @NotBlank(message = Errors.VACIO)
-    private Usuario usuario;
+    private Long idUsuario;
+    private String nombreUsuario;
+    private String correoUsuario;
 
-    private TipoReporte tipo;
-    private String ubicacion;
-    private LocalDate fecha;
+    private Long idReporte;
+    private TipoReporte tipoReporte;
+    private String ubicacionReporte;
+    private LocalDate fechaReporte;
 
-    private String nombre;
-    private String especie;
-    private String raza;
-    private String descripcion;
-    private String urlFoto;
+    private Long idMascota;
+    private String nombreMascota;
+    private String especieMascota;
+    private String razaMascota;
+    private String descripcionMascota;
+    private String urlFotoMascota;
 
 
 }
