@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,8 +24,16 @@ public class MascotaService implements IMascotaService{
     }
 
     @Override
-    public Mascota findMascotaById(Long id) {
+    public Mascota findById(Long id) {
         return mascotaRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Mascota con ID " + id + " no encontrada"));
     }
+
+    @Override
+    public List<Mascota> findAll() {
+        List<Mascota> listaMascotas = mascotaRepository.findAll();
+        return listaMascotas;
+    }
+
+
 }
