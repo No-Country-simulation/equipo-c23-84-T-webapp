@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/mascotas")
 public class MascotaController {
@@ -16,12 +18,18 @@ public class MascotaController {
     private IMascotaService mascotaService;
 
     @PostMapping
-    public ResponseEntity<Mascota> saveMascota (@Valid @RequestBody Mascota mascota) {
+    public ResponseEntity<Mascota> save (@Valid @RequestBody Mascota mascota) {
         return ResponseEntity.status(HttpStatus.CREATED).body(mascotaService.save(mascota));
     }
 
-    @GetMapping
-    public ResponseEntity<Mascota> findMascotaById (@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(mascotaService.findMascotaById(id));
+    @GetMapping("/{id}")
+    public ResponseEntity<Mascota> findById (@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(mascotaService.findById(id));
     }
+
+    @GetMapping
+    public ResponseEntity<List<Mascota>> findAll () {
+        return ResponseEntity.status(HttpStatus.OK).body(mascotaService.findAll());
+    }
+
 }
