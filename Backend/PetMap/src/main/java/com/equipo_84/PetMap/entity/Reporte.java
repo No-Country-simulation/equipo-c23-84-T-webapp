@@ -24,12 +24,11 @@ public class Reporte {
     private TipoReporte tipo;
 
     @Column(nullable = false, length = 255)
-    @NotNull(message = Errors.VACIO)
+    @NotBlank(message = Errors.VACIO)
     @Size(min = 1, max = 255, message = Errors.LARGO_INVALIDO)
     private String ubicacion;
 
     @Column(nullable = false)
-    @NotNull(message = Errors.VACIO)
     @PastOrPresent(message = Errors.FECHA_INVALIDA)
     private LocalDate fecha;
 
