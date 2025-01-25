@@ -8,11 +8,12 @@ import com.equipo_84.PetMap.repository.IReporteRepository;
 import com.equipo_84.PetMap.service.mascotaService.IMascotaService;
 import com.equipo_84.PetMap.util.Errors;
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
-
+@Service
 public class ReporteService implements IReporteService{
 
     private final IMascotaService mascotaService;
@@ -30,7 +31,7 @@ public class ReporteService implements IReporteService{
         nuevaMascota.setNombre(reporteDTO.getNombre());
         nuevaMascota.setEspecie(reporteDTO.getEspecie());
         nuevaMascota.setRaza(reporteDTO.getRaza());
-        nuevaMascota.setDescripcion(reporteDTO.getDescripcion());
+        nuevaMascota.setDescripcionMascota(reporteDTO.getDescripcion());
         nuevaMascota.setUrlFoto(reporteDTO.getUrlFoto());
 
         Mascota mascotaGuardada = mascotaService.save(nuevaMascota);
@@ -75,10 +76,11 @@ public class ReporteService implements IReporteService{
     }
 
     @Override
-    public void borrarReporte(Long id) {
+    public boolean borrarReporte(Long id) {
         if (!reporteRepository.existsById(id)) {
             throw new NoSuchElementException(String.format(Errors.REPORT_NOT_FOUND, id));
         }
         reporteRepository.deleteById(id);
+        return false;
     }
 }

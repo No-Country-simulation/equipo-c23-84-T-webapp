@@ -23,7 +23,7 @@ public interface IReporteService {
 
     public Reporte editarReporte(Reporte reporte);
 
-    public void borrarReporte(Long id);
+    public boolean borrarReporte(Long id);
 
 
 }
