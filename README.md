@@ -1,7 +1,6 @@
 # equipo-c23-84-T-webapp
 <div align="center">
-   <img src="![petmap (2)](https://github.com/user-attachments/assets/f2a41dfc-7261-46cf-9c72-8d6b21089854)
-" alt="Logo PetMap"  />
+   <img src="https://github.com/user-attachments/assets/f1199004-cb60-4e5b-a8ff-fb672202ecfd" alt="Logo"  />
    <p><strong>#</strong></p>
 </div>
 
