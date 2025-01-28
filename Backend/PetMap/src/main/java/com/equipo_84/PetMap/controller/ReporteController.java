@@ -63,6 +63,17 @@ public class ReporteController {
         return ResponseEntity.ok(reportes);
     }
 
+    @GetMapping("/especie/{especie}")
+    public ResponseEntity<List<ReporteDTO>> reportesXespecie(@PathVariable String especie) {
+        List<ReporteDTO> reportes = reporteService.reportesXespecie(especie);
+        return ResponseEntity.ok(reportes);
+    }
+    @GetMapping("/raza/{raza}")
+    public ResponseEntity<List<ReporteDTO>> reportesXraza(@PathVariable String raza) {
+        List<ReporteDTO> reportes = reporteService.reportesXraza(raza);
+        return ResponseEntity.ok(reportes);
+    }
+
     @PutMapping("/editar/{id}")
     public ResponseEntity<ReporteDTO> editarReporte(@PathVariable Long id,
                                                     @Valid @RequestBody ReporteDTO reporte) {
