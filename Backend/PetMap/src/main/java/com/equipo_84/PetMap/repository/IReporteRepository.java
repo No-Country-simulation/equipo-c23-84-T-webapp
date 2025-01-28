@@ -15,4 +15,5 @@ public interface IReporteRepository extends JpaRepository<Reporte,Long> {
     List<Reporte> findByFecha(LocalDate fecha);
 
 
+
 }

@@ -21,11 +21,12 @@ public class ReporteService implements IReporteService{
 
     private final IMascotaService mascotaService;
     private final IReporteRepository reporteRepository;
-    private final ReporteMapper reporteMapper = new ReporteMapper();
+    private final ReporteMapper reporteMapper;
 
-    public ReporteService(IMascotaService mascotaService, IReporteRepository reporteRepository) {
+    public ReporteService(IMascotaService mascotaService, IReporteRepository reporteRepository, ReporteMapper reporteMapper) {
         this.mascotaService = mascotaService;
         this.reporteRepository = reporteRepository;
+        this.reporteMapper = reporteMapper;
     }
 
     @Transactional
@@ -118,6 +119,18 @@ public class ReporteService implements IReporteService{
         return listaReportesDTO;
     }
 
+    @Override
+    public List<ReporteDTO> reportesXespecie(String especie) {
+
+        return mascotaService.mascotaXespecie(especie);
+    }
+
+    @Override
+    public List<ReporteDTO> reportesXraza(String raza) {
+
+        return mascotaService.mascotaXraza(raza);
+    }
+
     @Transactional
     @Override
     public ReporteDTO editarReporte(Long id,ReporteDTO reporteDTO) {
@@ -158,4 +171,5 @@ public class ReporteService implements IReporteService{
         reporteRepository.deleteById(id);
         return true;
     }
+
 }
