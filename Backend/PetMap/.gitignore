@@ -1,16 +1,25 @@
-HELP.md
+#Directorio de compilación de Maven
+target/
 
+#Archivos generados por el IDE IntelliJ IDEA
+.idea/
+*.iml
 
-### STS ###
+#Archivos generados por el IDE Eclipse
+.classpath
+.project
+.settings/
 
+#Archivos de configuración específicos de la máquina local
+*.log
+*.swp
 
-### IntelliJ IDEA ###
+#Archivos de configuración de Maven y Gradle
+*.jar
+*.war
+*.ear
 
-### NetBeans ###
-
-
-### VS Code ###
-.vscode/
-
-# Configuración de entornos locales
-.env
+#Archivos de configuración de Spring Boot (configuraciones específicas locales)
+*.properties
+*.yml
+*.json
