@@ -5,9 +5,7 @@ import com.equipo_84.PetMap.entity.Mascota;
 import com.equipo_84.PetMap.repository.IMascotaRepository;
 import com.equipo_84.PetMap.util.ReporteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,24 +22,29 @@ public class MascotaService implements IMascotaService{
 
 
     @Override
-    public Mascota save(Mascota mascota) {
+    public Mascota guardarMascota(Mascota mascota) {
         mascota = mascotaRepository.save(mascota);
         return mascota;
     }
 
     @Override
-    public Mascota findById(Long id) {
+    public Mascota mascotaXId(Long id) {
         return mascotaRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Mascota con ID " + id + " no encontrada"));
+                .orElseThrow(() -> new IllegalArgumentException ("Mascota con ID " + id + " no encontrada"));
     }
 
     @Override
-    public List<Mascota> findAll() {
+    public List<Mascota> listarMascotas() {
         List<Mascota> listaMascotas = mascotaRepository.findAll();
         return listaMascotas;
     }
 
     @Override
+    public Mascota editarMascota(Long id, Mascota mascota) {
+        Mascota newMascota = this.mascotaXId(id);
+        return mascotaRepository.save(mascota);
+    }
+
     public List<ReporteDTO> mascotaXespecie(String especie) {
         List<Mascota> listaMascotas=mascotaRepository.findByEspecieConReporte(especie);
         List<ReporteDTO> listaReportesDTO=new ArrayList<ReporteDTO>();
@@ -51,6 +54,7 @@ public class MascotaService implements IMascotaService{
         }
 
         return listaReportesDTO;
+
     }
     @Override
     public List<ReporteDTO> mascotaXraza(String raza) {
@@ -63,6 +67,5 @@ public class MascotaService implements IMascotaService{
 
         return listaReportesDTO;
     }
-
 
 }

@@ -46,7 +46,7 @@ public class ReporteService implements IReporteService{
         nuevaMascota.setDescripcionMascota(reporteDTO.getDescripcionMascota());
         nuevaMascota.setUrlFoto(reporteDTO.getUrlFotoMascota());
 
-        Mascota mascotaGuardada = mascotaService.save(nuevaMascota);
+        Mascota mascotaGuardada = mascotaService.guardarMascota(nuevaMascota);
 
         Reporte reporte = new Reporte();
         reporte.setUsuario(usuario);
@@ -149,7 +149,7 @@ public class ReporteService implements IReporteService{
         nuevaMascota.setDescripcionMascota(reporteDTO.getDescripcionMascota());
         nuevaMascota.setUrlFoto(reporteDTO.getUrlFotoMascota());
 
-        Mascota mascotaGuardada = mascotaService.save(nuevaMascota);
+        Mascota mascotaGuardada = mascotaService.guardarMascota(nuevaMascota);
 
         Reporte reporte = new Reporte();
         reporte.setId(reporteDTO.getIdReporte());
