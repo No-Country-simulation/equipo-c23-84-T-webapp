@@ -1,10 +1,13 @@
 package com.equipo_84.PetMap.service.mascotaService;
 
+import com.equipo_84.PetMap.dto.ReporteDTO;
 import com.equipo_84.PetMap.entity.Mascota;
 import com.equipo_84.PetMap.repository.IMascotaRepository;
+import com.equipo_84.PetMap.util.ReporteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,13 +16,17 @@ public class MascotaService implements IMascotaService{
     @Autowired
     private IMascotaRepository mascotaRepository;
 
+    @Autowired
+    private ReporteMapper reporteMapper;
+
+
 
     @Override
     public Mascota guardarMascota(Mascota mascota) {
         mascota = mascotaRepository.save(mascota);
         return mascota;
     }
-bac
+
     @Override
     public Mascota mascotaXId(Long id) {
         return mascotaRepository.findById(id)
@@ -36,6 +43,29 @@ bac
     public Mascota editarMascota(Long id, Mascota mascota) {
         Mascota newMascota = this.mascotaXId(id);
         return mascotaRepository.save(mascota);
+    }
+
+    public List<ReporteDTO> mascotaXespecie(String especie) {
+        List<Mascota> listaMascotas=mascotaRepository.findByEspecieConReporte(especie);
+        List<ReporteDTO> listaReportesDTO=new ArrayList<ReporteDTO>();
+        for (Mascota mascota : listaMascotas) {
+            ReporteDTO reporteDTO=reporteMapper.convertirAReporteDTO(mascota.getReporte());
+            listaReportesDTO.add(reporteDTO);
+        }
+
+        return listaReportesDTO;
+
+    }
+    @Override
+    public List<ReporteDTO> mascotaXraza(String raza) {
+        List<Mascota> listaMascotas=mascotaRepository.findByRazaConReporte(raza);
+        List<ReporteDTO> listaReportesDTO=new ArrayList<ReporteDTO>();
+        for (Mascota mascota : listaMascotas) {
+            ReporteDTO reporteDTO=reporteMapper.convertirAReporteDTO(mascota.getReporte());
+            listaReportesDTO.add(reporteDTO);
+        }
+
+        return listaReportesDTO;
     }
 
 }
