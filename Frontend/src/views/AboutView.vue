@@ -1,14 +1,20 @@
 <script setup>
+import AbotBannerIntro from '@/components/AbotBannerIntro.vue';
+import AboutOverview from '@/components/AboutOverview.vue';
+import CallToAction from '@/components/CallToAction.vue';
+import TestimonialsCarousel from '@/components/TestimonialsCarousel.vue';
+
 
 </script>
 <template>
     <div>
-        <h1>Nosotros</h1>
+        <AbotBannerIntro />
+        <AboutOverview />
+        <CallToAction />
+        <TestimonialsCarousel />
 
     </div>
 </template>
 
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

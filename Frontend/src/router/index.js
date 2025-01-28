@@ -21,8 +21,17 @@ const router = createRouter({
           path: '/contacto',
           name: 'contact',
           component: () => import('../views/ContactView.vue')
+        },
+        {
+          path: '/servicios',
+          name: 'services',
+          component: () => import('../views/ServicesView.vue')
+        },
+        {
+          path: '/servicios/:id',
+          name: 'servicesDetail',
+          component: () => import('../views/ServicesDetailView.vue')
         }
-        
       ]
     },
     {
@@ -43,13 +52,13 @@ const router = createRouter({
         }
       ]
     },
-   
+
     {
       path: '/:catchAll(.*)*',
       name: 'not-found',
       component: () => import('../views/NotFoundView.vue')
     }
-  ],
+  ]
 })
 
 export default router

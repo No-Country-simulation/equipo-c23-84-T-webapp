@@ -31,7 +31,7 @@ defineProps({
               <v-list-item>Collection 2</v-list-item>
             </v-list>
           </VMenu>
-          <VBtn color="" class="mr-3" text :to="{ name: 'home' }">Servicios</VBtn>
+          <VBtn color="" class="mr-3" text :to="{ name: 'services' }">Servicios</VBtn>
           <VBtn color="" class="mr-3" text :to="{ name: 'contact' }">Contacto</VBtn>
         </VCol>
 
@@ -52,9 +52,11 @@ defineProps({
 * {
   color: white;
 }
+
 .header-bar {
   background-color: #66CDAA;
 }
+
 .logo {
   width: 166px;
   height: 50px;
@@ -62,9 +64,11 @@ defineProps({
 
 }
 
-a, button {
-font-size: $fs-base;
-color: $gray;
+a,
+button {
+  font-size: $fs-base;
+  color: $gray;
+
   &:hover {
     color: white !important;
   }
