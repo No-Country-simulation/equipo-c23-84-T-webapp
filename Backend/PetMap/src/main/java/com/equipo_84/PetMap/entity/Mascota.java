@@ -41,9 +41,6 @@ public class Mascota {
     @Size(min = 2, max = 200, message = Errors.LARGO_INVALIDO)
     private String descripcionMascota;
 
-    @Size(min = 2, max = 200, message = Errors.LARGO_INVALIDO)
-    private String descripcionAdicional;
-
     @Column(nullable = false)
     @NotBlank(message = Errors.VACIO)
     private String urlFoto;

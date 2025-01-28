@@ -17,19 +17,25 @@ public class MascotaController {
     @Autowired
     private IMascotaService mascotaService;
 
-    @PostMapping
-    public ResponseEntity<Mascota> save (@Valid @RequestBody Mascota mascota) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(mascotaService.save(mascota));
+    @PostMapping("/crear")
+    public ResponseEntity<Mascota> guardarMascota (@Valid @RequestBody Mascota mascota) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(mascotaService.guardarMascota(mascota));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Mascota> findById (@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(mascotaService.findById(id));
+    @GetMapping("/traer/{id}")
+    public ResponseEntity<Mascota> mascotaXId (@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(mascotaService.mascotaXId(id));
     }
 
-    @GetMapping
-    public ResponseEntity<List<Mascota>> findAll () {
-        return ResponseEntity.status(HttpStatus.OK).body(mascotaService.findAll());
+    @GetMapping("/traer")
+    public ResponseEntity<List<Mascota>> listarMascotas () {
+        return ResponseEntity.status(HttpStatus.OK).body(mascotaService.listarMascotas());
+    }
+
+    @PutMapping("/editar/{id}")
+    public ResponseEntity<Mascota> editarMascota(@PathVariable Long id,
+                                                 @Valid @RequestBody Mascota mascota) {
+        return ResponseEntity.status(HttpStatus.OK).body(mascotaService.editarMascota(id,mascota));
     }
 
 }
