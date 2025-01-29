@@ -13,5 +13,6 @@ public interface IMascotaService {
     Mascota editarMascota(Long id, Mascota mascota);
     List<ReporteDTO> mascotaXespecie(String especie);
     List<ReporteDTO> mascotaXraza(String raza);
+    String borrarMascota(Long id);
 }
 
