@@ -40,7 +40,7 @@ public class Usuario {
     private String contrasena;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = false)     
     private Rol rol;
 
     @OneToMany(mappedBy = "usuario")
