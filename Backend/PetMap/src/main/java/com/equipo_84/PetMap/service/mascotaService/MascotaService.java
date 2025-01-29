@@ -5,7 +5,9 @@ import com.equipo_84.PetMap.entity.Mascota;
 import com.equipo_84.PetMap.repository.IMascotaRepository;
 import com.equipo_84.PetMap.util.ReporteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +32,8 @@ public class MascotaService implements IMascotaService{
     @Override
     public Mascota mascotaXId(Long id) {
         return mascotaRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException ("Mascota con ID " + id + " no encontrada"));
+                //.orElseThrow(() -> new IllegalArgumentException ("Mascota con ID " + id + " no encontrada"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Mascota con ID " + id + " no encontrada"));
     }
 
     @Override
@@ -66,6 +69,13 @@ public class MascotaService implements IMascotaService{
         }
 
         return listaReportesDTO;
+    }
+
+    @Override
+    public String borrarMascota(Long id) {
+        this.mascotaXId(id);
+        mascotaRepository.deleteById(id);
+        return "Mascota ID " + id + " borrada exitosamente";
     }
 
 }
