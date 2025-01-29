@@ -3,7 +3,7 @@ package com.equipo_84.PetMap.service.mascotaService;
 import com.equipo_84.PetMap.dto.ReporteDTO;
 import com.equipo_84.PetMap.entity.Mascota;
 import com.equipo_84.PetMap.repository.IMascotaRepository;
-import com.equipo_84.PetMap.util.ReporteMapper;
+import com.equipo_84.PetMap.util.Mappers.ReporteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

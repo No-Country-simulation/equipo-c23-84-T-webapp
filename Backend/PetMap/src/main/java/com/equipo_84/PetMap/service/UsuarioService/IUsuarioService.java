@@ -1,17 +1,18 @@
 package com.equipo_84.PetMap.service.UsuarioService;
 
+import com.equipo_84.PetMap.dto.UsuarioDTO;
 import com.equipo_84.PetMap.entity.Usuario;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface UsuarioService {
+public interface IUsuarioService {
 
-    List<Usuario> findAll();
+    List<UsuarioDTO> findAll();
 
-    Optional<Usuario> findById(Long id);
+    Optional<UsuarioDTO> findById(Long id);
 
-    Usuario updateUsuario(Long id, Usuario usuario);
+    UsuarioDTO updateUsuario(Long id, UsuarioDTO usuario);
 
     void deleteUsuario(Long id);
 

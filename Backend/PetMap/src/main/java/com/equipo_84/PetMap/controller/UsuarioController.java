@@ -1,7 +1,8 @@
 package com.equipo_84.PetMap.controller;
 
+import com.equipo_84.PetMap.dto.UsuarioDTO;
 import com.equipo_84.PetMap.entity.Usuario;
-import com.equipo_84.PetMap.service.UsuarioService.UsuarioService;
+import com.equipo_84.PetMap.service.UsuarioService.IUsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,11 +17,11 @@ import java.util.Optional;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioService usuarioService;
+    private IUsuarioService usuarioService;
 
     @GetMapping
-    public ResponseEntity<List<Usuario>> findAll() {
-        List<Usuario> usuarios = usuarioService.findAll();
+    public ResponseEntity<List<UsuarioDTO>> findAll() {
+        List<UsuarioDTO> usuarios = usuarioService.findAll();
         if (usuarios.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -28,8 +29,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> findById(@PathVariable Long id) {
-        Optional<Usuario> usuarioOptional = usuarioService.findById(id);
+    public ResponseEntity<UsuarioDTO> findById(@PathVariable Long id) {
+        Optional<UsuarioDTO> usuarioOptional = usuarioService.findById(id);
 
         if (usuarioOptional.isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -39,9 +40,9 @@ public class UsuarioController {
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<Usuario> updateUsuario(@PathVariable Long id,
-                                               @Valid @RequestBody Usuario usuario) {
-        Usuario usuarioEditado = usuarioService.updateUsuario(id, usuario);
+    public ResponseEntity<UsuarioDTO> updateUsuario(@PathVariable Long id,
+                                               @Valid @RequestBody UsuarioDTO usuario) {
+        UsuarioDTO usuarioEditado = usuarioService.updateUsuario(id, usuario);
         return ResponseEntity.ok(usuarioEditado);
     }
 
