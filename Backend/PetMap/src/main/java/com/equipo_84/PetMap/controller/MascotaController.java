@@ -39,4 +39,9 @@ public class MascotaController {
         return ResponseEntity.status(HttpStatus.OK).body(mascotaService.editarMascota(id,mascota));
     }
 
+    @DeleteMapping("borrar/{id}")
+    public ResponseEntity<String> borrarMascota(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(mascotaService.borrarMascota(id));
+    }
+
 }
