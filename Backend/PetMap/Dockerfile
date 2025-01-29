@@ -1,12 +1,11 @@
 # Etapa de construcción: Compilar el proyecto con Maven
-FROM maven:3.8.6-openjdk-17-slim AS build
-
+FROM maven:latest AS build
 # Establece el directorio de trabajo
 WORKDIR /app
 
 # Copia el archivo pom.xml y el código fuente
 COPY pom.xml .
-COPY src ./srcW
+COPY src ./src
 
 # Ejecuta Maven para compilar el proyecto y generar el JAR
 RUN mvn clean package -DskipTests
