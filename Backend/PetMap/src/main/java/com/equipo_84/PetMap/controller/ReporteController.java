@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/reportes")
 public class ReporteController {
@@ -35,7 +36,7 @@ public class ReporteController {
         return ResponseEntity.ok(reportes);
     }
 
-    @GetMapping("traer/{id}/")
+    @GetMapping("traer/{id}")
     public ResponseEntity<ReporteDTO> reporteXid(@PathVariable Long id) {
         ReporteDTO reporte = reporteService.reporteXid(id);
         if (reporte == null) {
