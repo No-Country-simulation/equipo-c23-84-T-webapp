@@ -15,5 +15,6 @@ com\equipo_84\PetMap\PetMapApplication.class
 com\equipo_84\PetMap\util\Errors.class
 com\equipo_84\PetMap\controller\MascotaController.class
 com\equipo_84\PetMap\config\security\SecurityConfig.class
+com\equipo_84\PetMap\config\web\WebConfig.class
 com\equipo_84\PetMap\service\reporteService\ReporteService.class
 com\equipo_84\PetMap\util\ReporteMapper.class
