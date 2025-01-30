@@ -1,4 +1,4 @@
-package com.equipo_84.PetMap.util;
+package com.equipo_84.PetMap.util.Mappers;
 
 import com.equipo_84.PetMap.dto.ReporteDTO;
 import com.equipo_84.PetMap.entity.Reporte;
@@ -12,7 +12,7 @@ public class ReporteMapper {
 
         // Asignación de datos de usuario
         reporteDTO.setIdUsuario(reporte.getUsuario().getId());
-        reporteDTO.setNombreUsuario(reporte.getUsuario().getNombre());
+        reporteDTO.setNombreUsuario(reporte.getUsuario().getUsername());
         reporteDTO.setCorreoUsuario(reporte.getUsuario().getCorreo());
 
         // Asignación de datos del reporte
