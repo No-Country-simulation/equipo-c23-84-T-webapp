@@ -28,6 +28,11 @@ public class Reporte {
     @Size(min = 1, max = 255, message = Errors.LARGO_INVALIDO)
     private String ubicacion;
 
+    @Column(nullable = false, length = 30)
+    @NotBlank(message = Errors.VACIO)
+    @Size(min = 1, max = 30, message = Errors.LARGO_INVALIDO)
+    private String contacto;
+
     @Column(nullable = false)
     @PastOrPresent(message = Errors.FECHA_INVALIDA)
     private LocalDate fecha;

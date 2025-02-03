@@ -17,6 +17,7 @@ public class ReporteDTO {
     private Long idReporte;
     private TipoReporte tipoReporte;
     private String ubicacionReporte;
+    private String contacto;
     private LocalDate fechaReporte;
 
     private Long idMascota;
