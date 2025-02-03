@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class UsuarioController {
     private IUsuarioService usuarioService;
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<UsuarioDTO>> findAll() {
         List<UsuarioDTO> usuarios = usuarioService.findAll();
         if (usuarios.isEmpty()) {
@@ -29,6 +31,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UsuarioDTO> findById(@PathVariable Long id) {
         Optional<UsuarioDTO> usuarioOptional = usuarioService.findById(id);
 
@@ -40,6 +43,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/edit/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UsuarioDTO> updateUsuario(@PathVariable Long id,
                                                @Valid @RequestBody UsuarioDTO usuario) {
         UsuarioDTO usuarioEditado = usuarioService.updateUsuario(id, usuario);
@@ -47,6 +51,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> deleteUsuario(@PathVariable Long id) {
         usuarioService.deleteUsuario(id);
         return ResponseEntity.noContent().build();

@@ -1,6 +1,5 @@
 package com.equipo_84.PetMap.entity;
 
-import com.equipo_84.PetMap.entity.enums.Rol;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -11,7 +10,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import com.equipo_84.PetMap.util.Errors;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -39,9 +40,13 @@ public class Usuario {
     @Size(min = 8, message = Errors.CONTRSENA_INVALIDA)
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)     
-    private Rol rol;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "usuarios_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Rol> roles = new HashSet<>();
 
     @OneToMany(mappedBy = "usuario")
     private List<Reporte> reports;
