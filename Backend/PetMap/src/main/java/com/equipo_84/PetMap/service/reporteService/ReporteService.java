@@ -52,6 +52,7 @@ public class ReporteService implements IReporteService{
         reporte.setUsuario(usuario);
         reporte.setMascota(mascotaGuardada);
         reporte.setTipo(reporteDTO.getTipoReporte());
+        reporte.setContacto(reporteDTO.getContacto());
         reporte.setFecha(reporteDTO.getFechaReporte());
         reporte.setUbicacion(reporteDTO.getUbicacionReporte());
         reporteRepository.save(reporte);
@@ -156,6 +157,7 @@ public class ReporteService implements IReporteService{
         reporte.setUsuario(usuario);
         reporte.setMascota(mascotaGuardada);
         reporte.setTipo(reporteDTO.getTipoReporte());
+        reporte.setContacto(reporteDTO.getContacto());
         reporte.setFecha(reporteDTO.getFechaReporte());
         reporte.setUbicacion(reporteDTO.getUbicacionReporte());
         reporteRepository.save(reporte);

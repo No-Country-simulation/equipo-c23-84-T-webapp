@@ -19,6 +19,7 @@ public class ReporteMapper {
         reporteDTO.setIdReporte(reporte.getId());
         reporteDTO.setTipoReporte(reporte.getTipo());
         reporteDTO.setUbicacionReporte(reporte.getUbicacion());
+        reporteDTO.setContacto(reporte.getContacto());
         reporteDTO.setFechaReporte(reporte.getFecha());
 
         // Asignación de datos de mascota
