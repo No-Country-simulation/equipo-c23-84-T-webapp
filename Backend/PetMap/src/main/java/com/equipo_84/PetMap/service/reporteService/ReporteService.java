@@ -8,7 +8,7 @@ import com.equipo_84.PetMap.entity.enums.TipoReporte;
 import com.equipo_84.PetMap.repository.IReporteRepository;
 import com.equipo_84.PetMap.service.mascotaService.IMascotaService;
 import com.equipo_84.PetMap.util.Errors;
-import com.equipo_84.PetMap.util.ReporteMapper;
+import com.equipo_84.PetMap.util.Mappers.ReporteMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +34,7 @@ public class ReporteService implements IReporteService{
     public ReporteDTO guardarReporte(ReporteDTO reporteDTO) {
         Usuario usuario = new Usuario();
         usuario.setId(reporteDTO.getIdUsuario());
-        usuario.setNombre(reporteDTO.getNombreUsuario());
+        usuario.setUsername(reporteDTO.getNombreUsuario());
         usuario.setCorreo(reporteDTO.getCorreoUsuario());
 
 
@@ -136,7 +136,7 @@ public class ReporteService implements IReporteService{
     public ReporteDTO editarReporte(Long id,ReporteDTO reporteDTO) {
         Usuario usuario = new Usuario();
         usuario.setId(reporteDTO.getIdUsuario());
-        usuario.setNombre(reporteDTO.getNombreUsuario());
+        usuario.setUsername(reporteDTO.getNombreUsuario());
         usuario.setCorreo(reporteDTO.getCorreoUsuario());
 
 
