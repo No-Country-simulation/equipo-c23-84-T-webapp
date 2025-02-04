@@ -60,10 +60,6 @@ const Contacto = () => {
                     </div>
                 </div>
             </section>
-
-
-            {/* footer */}
-            <Footer />
         </div>
         
     );

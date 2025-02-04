@@ -1,5 +1,4 @@
 import React from 'react';
-/* import PetSearch from './petSearch.jsx'; */
 import Footer from './footer.jsx';
 import "../css/styles.css";
 
@@ -105,8 +104,6 @@ const PaginaInicio = () => {
                     </div>
                 </div>
             </section>
-            {/* Footer */}
-            <Footer />
         </div>
 
     );

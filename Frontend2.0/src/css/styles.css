@@ -268,6 +268,15 @@ a:hover {
     color: var(--background)!important;
 }
 
+/* Estilos para mascotaPerdida.jsx */
+
+.form-control-petData{
+    background-color: var(--background);
+    color: var(--background);
+    border: 1px solid rgb(43, 37, 37);
+    font-weight: 300;
+}
+
 /* Footer */
 
 .footer {

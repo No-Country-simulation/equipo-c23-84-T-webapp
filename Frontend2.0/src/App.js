@@ -9,6 +9,9 @@ import PaginaInicio from "./components/paginaInicio";
 import HeaderInicio from "./components/headerInicio";
 import Contacto from "./components/contacto";
 import AboutUs from "./components/sobreNosotros";
+import MascotaPerdida from "./components/mascotaPerdida";
+import FormularioReportarMascota from "./components/FormularioReportarMascota";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -47,6 +50,7 @@ function App() {
             <>
               <HeaderInicio />
               <PaginaInicio />
+              <Footer/>
             </>
           }
         />
@@ -56,6 +60,7 @@ function App() {
             <>
               <HeaderInicio />
               <Contacto />
+              <Footer/>
             </>
           }
         />
@@ -65,6 +70,27 @@ function App() {
             <>
               <HeaderInicio />
               <AboutUs />
+              <Footer/>
+            </>
+          }
+        />
+        <Route
+          path="/MascotaPerdida"
+          element={
+            <>
+              <HeaderInicio />
+              <MascotaPerdida />
+              <Footer/>
+            </>
+          }
+        />
+        <Route
+          path="/FormularioReportarMascota"
+          element={
+            <>
+              <HeaderInicio />
+              <FormularioReportarMascota />
+              <Footer/>
             </>
           }
         />
