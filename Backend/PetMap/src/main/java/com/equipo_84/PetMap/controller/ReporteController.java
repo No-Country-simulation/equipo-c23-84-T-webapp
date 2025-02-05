@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/reportes")
 public class ReporteController {
@@ -81,6 +80,12 @@ public class ReporteController {
     @PreAuthorize("hasAnyRole('ADMIN', 'USUARIO')")
     public ResponseEntity<List<ReporteDTO>> reportesXraza(@PathVariable String raza) {
         List<ReporteDTO> reportes = reporteService.reportesXraza(raza);
+        return ResponseEntity.ok(reportes);
+    }
+    @GetMapping("/usuario/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USUARIO')")
+    public ResponseEntity<List<ReporteDTO>> reportesSusuario(@PathVariable Long id) {
+        List<ReporteDTO> reportes = reporteService.reportesXusuario(id);
         return ResponseEntity.ok(reportes);
     }
 

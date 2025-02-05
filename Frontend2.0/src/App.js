@@ -13,14 +13,14 @@ import FormularioReportarMascota from "./components/forms/FormularioReportarMasc
 import FormularioMascotaEncontrada from "./components/forms/FormularioMascotaEncontrada";
 
 // Importaciones de páginas
-import Registro from "./components/Registro";
-import Login from "./components/Login";
+import Registro from "./components/registro";
+import Login from "./components/login";
 import PaginaInicio from "./components/pages/PaginaInicio";
 import Contacto from "./components/pages/Contacto";
 import AboutUs from "./components/pages/SobreNosotros";
 import MascotaPerdida from "./components/pages/MascotaPerdida";
-import PetDetails from "./components/pages/PetDetails";
-import UserDashboard from "./components/pages/UserDashboard";
+import PetDetails from "./components/pages/petDetails";
+import UserDashboard from "./components/pages/userDashboard";
 
 function App() {
   return (
