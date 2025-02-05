@@ -29,5 +29,5 @@ public interface IReporteService {
 
     boolean borrarReporte(Long id);
 
-
+    List<ReporteDTO> reportesXusuario(Long id);
 }

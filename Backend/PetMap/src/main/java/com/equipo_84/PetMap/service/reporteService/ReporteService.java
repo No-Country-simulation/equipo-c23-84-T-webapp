@@ -6,6 +6,7 @@ import com.equipo_84.PetMap.entity.Reporte;
 import com.equipo_84.PetMap.entity.Usuario;
 import com.equipo_84.PetMap.entity.enums.TipoReporte;
 import com.equipo_84.PetMap.repository.IReporteRepository;
+import com.equipo_84.PetMap.service.UsuarioService.IUsuarioService;
 import com.equipo_84.PetMap.service.mascotaService.IMascotaService;
 import com.equipo_84.PetMap.util.Errors;
 import com.equipo_84.PetMap.util.Mappers.ReporteMapper;
@@ -22,11 +23,13 @@ public class ReporteService implements IReporteService{
     private final IMascotaService mascotaService;
     private final IReporteRepository reporteRepository;
     private final ReporteMapper reporteMapper;
+    private final IUsuarioService usuarioService;
 
-    public ReporteService(IMascotaService mascotaService, IReporteRepository reporteRepository, ReporteMapper reporteMapper) {
+    public ReporteService(IMascotaService mascotaService, IReporteRepository reporteRepository, ReporteMapper reporteMapper, IUsuarioService usuarioService) {
         this.mascotaService = mascotaService;
         this.reporteRepository = reporteRepository;
         this.reporteMapper = reporteMapper;
+        this.usuarioService = usuarioService;
     }
 
     @Transactional
@@ -172,6 +175,11 @@ public class ReporteService implements IReporteService{
         }
         reporteRepository.deleteById(id);
         return true;
+    }
+
+    @Override
+    public List<ReporteDTO> reportesXusuario(Long id) {
+        return usuarioService.reporteXusuario(id);
     }
 
 }
