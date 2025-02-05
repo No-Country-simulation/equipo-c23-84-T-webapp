@@ -1,6 +1,5 @@
 import React from 'react';
-import Footer from './footer.jsx';
-import "../css/styles.css";
+import '../../css/styles.css'
 
 const Contacto = () => {
     return (

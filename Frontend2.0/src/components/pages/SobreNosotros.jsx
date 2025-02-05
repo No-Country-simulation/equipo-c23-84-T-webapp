@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from './footer.jsx';
 
 function AboutUs() {
   return (

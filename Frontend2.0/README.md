@@ -1,70 +1,168 @@
-# Getting Started with Create React App
+# Nombre del Proyecto
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es una aplicación web desarrollada con React que permite a los usuarios reportar y encontrar mascotas perdidas. La aplicación utiliza componentes reutilizables, estilos personalizados y gestión de estado.
 
-## Available Scripts
+## Estructura del Proyecto
 
-In the project directory, you can run:
+```plaintext
+my-app/
+├── public/
+│   ├── index.html
+│   ├── favicon.ico
+│   ├── manifest.json
+│   ├── robots.txt
+├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   ├── fonts/
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── Button.jsx
+│   │   │   ├── Header.jsx
+│   │   │   ├── Footer.jsx
+│   │   ├── forms/
+│   │   │   ├── FormularioReportarMascota.jsx
+│   │   │   ├── FormularioMascotaEncontrada.jsx
+│   │   ├── pages/
+│   │   │   ├── HomePage.jsx
+│   │   │   ├── AboutPage.jsx
+│   │   │   ├── Contacto.jsx
+│   │   │   ├── MascotaPerdida.jsx
+│   │   │   ├── PaginaInicio.jsx
+│   ├── context/
+│   │   ├── AuthContext.js
+│   ├── hooks/
+│   │   ├── useAuth.js
+│   │   ├── useFetch.js
+│   ├── services/
+│   │   ├── apiService.js
+│   │   ├── authService.js
+│   ├── styles/
+│   │   ├── index.css
+│   │   ├── styles.css
+│   ├── App.js
+│   ├── index.js
+│   ├── reportWebVitals.js
+│   ├── setupTests.js
+├── .gitignore
+├── package.json
+├── README.md
 
-### `npm start`
+Instalación
+Para clonar y ejecutar esta aplicación en tu máquina local, sigue estos pasos:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Clona el repositorio:
+git clone https://github.com/tu-usuario/tu-repositorio.git
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Instala las dependencias:
+cd tu-repositorio
+npm install
 
-### `npm test`
+Inicia la aplicación:
+npm start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Uso
+La aplicación permite a los usuarios:
 
-### `npm run build`
+Reportar mascotas perdidas.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Encontrar mascotas reportadas.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Contactar con los propietarios de las mascotas.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Scripts Disponibles
+En el directorio del proyecto, puedes ejecutar:
 
-### `npm run eject`
+npm start
+Ejecuta la aplicación en modo de desarrollo.\ Abre http://localhost:3000 para verlo en tu navegador.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+La página se recargará si haces ediciones.\ También verás cualquier error de lint en la consola.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+npm test
+Inicia el corredor de pruebas en modo interactivo de observación.\ Para más información, consulta la sección sobre pruebas en ejecución.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+npm run build
+Construye la aplicación para producción en la carpeta build.\ Agrupa correctamente React en modo de producción y optimiza la compilación para obtener el mejor rendimiento.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+La compilación se minimiza y los nombres de archivo incluyen los hashes.\ ¡Tu aplicación está lista para ser desplegada!
 
-## Learn More
+npm run eject
+Nota: esta es una operación unidireccional. Una vez que ejecutes eject, no puedes volver atrás.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Si no estás satisfecho con la herramienta de construcción y las opciones de configuración, puedes eject en cualquier momento. Este comando eliminará la dependencia de un solo bloque de construcción de tu proyecto.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+En su lugar, copiará todos los archivos de configuración y las dependencias transitivas (Webpack, Babel, ESLint, etc.) directamente en tu proyecto para que tengas el control total sobre ellos. Todos los comandos, excepto eject, seguirán funcionando, pero apuntarán a los scripts copiados para que puedas modificarlos.
 
-### Code Splitting
+Estructura de Archivos
+public/: Archivos públicos, incluido el archivo index.html.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+src/: Código fuente de la aplicación.
 
-### Analyzing the Bundle Size
+assets/: Recursos como imágenes y fuentes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+components/: Componentes de React divididos en subcarpetas (common, forms, pages).
 
-### Making a Progressive Web App
+context/: Contextos de React para la gestión del estado global.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+hooks/: Custom hooks para lógica reutilizable.
 
-### Advanced Configuration
+services/: Servicios y llamadas a APIs.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+styles/: Archivos de estilos CSS.
 
-### Deployment
+App.js: Componente principal de la aplicación.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+index.js: Punto de entrada principal.
 
-### `npm run build` fails to minify
+reportWebVitals.js: Métricas de rendimiento.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+setupTests.js: Configuración de pruebas.
+
+Actualizaciones Recientes
+En esta actualización se han realizado varios cambios y mejoras significativas en el proyecto. A continuación, se detalla lo que se ha hecho:
+
+Estructura del Proyecto
+Reorganización de la estructura de directorios:
+
+Se ha estructurado el proyecto en carpetas claras y coherentes para componentes reutilizables, formularios, páginas, contextos, hooks, servicios y estilos.
+
+Archivos y Componentes
+Renombrar Archivos a Pascal Case:
+
+Todos los nombres de archivos de componentes han sido renombrados a Pascal Case para seguir buenas prácticas.
+
+Importaciones Organizadas:
+
+Se organizaron y agruparon las importaciones en App.js para mejorar la legibilidad y el mantenimiento.
+
+Estilos CSS
+Separación de Estilos Globales y Específicos:
+
+Los estilos globales se han movido a index.css y los estilos específicos de componentes y páginas se han mantenido en styles.css.
+
+Uso de Variables de CSS:
+
+Se han definido variables de CSS para colores y fuentes en :root para mejorar la consistencia y facilidad de mantenimiento.
+
+Optimización de Estilos:
+
+Se han organizado y comentado los estilos CSS para mejorar la claridad y facilitar futuras modificaciones.
+
+Configuración y Archivos de Sistema
+Configuración de reportWebVitals.js y setupTests.js:
+
+Se ha explicado el propósito de estos archivos y su uso para métricas de rendimiento y configuración de pruebas respectivamente.
+
+Documentación y README.md
+Actualización del README.md:
+
+Se ha añadido una sección de estructura del proyecto, instrucciones de instalación y uso, y detalles sobre los scripts disponibles en el proyecto.
+
+Mejoras en la Documentación:
+
+Documentación detallada de la estructura de archivos y el propósito de cada directorio y archivo importante.
+
+Scripts y Herramientas
+Adición de Scripts en package.json:
+
+Se han añadido scripts útiles para la compilación, pruebas, linting y formateo del código.

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Footer from './footer.jsx';
 
 // Datos de ejemplo (simulando una base de datos)
 const petData = [

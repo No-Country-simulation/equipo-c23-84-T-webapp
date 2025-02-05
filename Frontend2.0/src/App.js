@@ -1,20 +1,26 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./components/header";
-import HeaderRegistro from "./components/headerRegistro";
-import Hero from "./components/hero"
-import Registro from "./components/registro";
-import Login from "./components/login";
-import PaginaInicio from "./components/paginaInicio";
-import HeaderInicio from "./components/headerInicio";
-import Contacto from "./components/contacto";
-import AboutUs from "./components/sobreNosotros";
-import MascotaPerdida from "./components/mascotaPerdida";
-import FormularioReportarMascota from "./components/FormularioReportarMascota";
-import FormularioMascotaEncontrada from "./components/FormularioMascotaEncontrada";
-import PetDetails from "./components/pages/petDetails";
-import UserDashboard from "./components/pages/userDashboard";
-import Footer from "./components/footer";
+
+// Importaciones de componentes comunes
+import Header from "./components/common/Header";
+import HeaderRegistro from "./components/common/HeaderRegistro";
+import HeaderInicio from "./components/common/HeaderInicio";
+import Hero from "./components/common/Hero";
+import Footer from "./components/common/Footer";
+
+// Importaciones de componentes de formularios
+import FormularioReportarMascota from "./components/forms/FormularioReportarMascota";
+import FormularioMascotaEncontrada from "./components/forms/FormularioMascotaEncontrada";
+
+// Importaciones de páginas
+import Registro from "./components/Registro";
+import Login from "./components/Login";
+import PaginaInicio from "./components/pages/PaginaInicio";
+import Contacto from "./components/pages/Contacto";
+import AboutUs from "./components/pages/SobreNosotros";
+import MascotaPerdida from "./components/pages/MascotaPerdida";
+import PetDetails from "./components/pages/PetDetails";
+import UserDashboard from "./components/pages/UserDashboard";
 
 function App() {
   return (
@@ -53,7 +59,7 @@ function App() {
             <>
               <HeaderInicio />
               <PaginaInicio />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -63,7 +69,7 @@ function App() {
             <>
               <HeaderInicio />
               <Contacto />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -73,7 +79,7 @@ function App() {
             <>
               <HeaderInicio />
               <AboutUs />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -83,7 +89,7 @@ function App() {
             <>
               <HeaderInicio />
               <MascotaPerdida />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -93,7 +99,7 @@ function App() {
             <>
               <HeaderInicio />
               <FormularioReportarMascota />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -103,7 +109,7 @@ function App() {
             <>
               <HeaderInicio />
               <FormularioMascotaEncontrada />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -113,7 +119,7 @@ function App() {
             <>
               <HeaderInicio />
               <PetDetails />
-              <Footer/>
+              <Footer />
             </>
           }
         />
@@ -123,7 +129,7 @@ function App() {
             <>
               <HeaderInicio />
               <UserDashboard />
-              <Footer/>
+              <Footer />
             </>
           }
         />

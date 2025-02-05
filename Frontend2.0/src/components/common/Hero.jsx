@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../css/styles.css'; // Asegúrate de importar tu archivo CSS correctamente
+import '../../css/styles.css'
 
 function Hero() {
   return (
