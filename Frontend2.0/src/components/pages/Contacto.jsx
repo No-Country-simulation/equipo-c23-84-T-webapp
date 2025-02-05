@@ -8,9 +8,9 @@ const Contacto = () => {
             <section className="hero overlay text-center py-5 hero-contacto d-flex align-items-center">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-7 col-lg-6 text-md-start">
+                    <div className="col-md-7 col-lg-6 text-md-start text-white">
                         <h1 className="h1-hero">Contacto</h1>
-                        <p className='p-hero'>Estamos aquí para ayudarte y responder a todas tus preguntas. Si necesitas información adicional, deseas compartir tus comentarios, o simplemente quieres conversar sobre cómo podemos hacer de nuestra comunidad un lugar mejor para las mascotas, no dudes en ponerte en contacto con nosotros.</p>
+                        <p className='p-hero text-white'>Estamos aquí para ayudarte y responder a todas tus preguntas. Si necesitas información adicional, deseas compartir tus comentarios, o simplemente quieres conversar sobre cómo podemos hacer de nuestra comunidad un lugar mejor para las mascotas, no dudes en ponerte en contacto con nosotros.</p>
                     </div>
                     <div className="col-md-5 col-lg-6"></div>
                 </div>
