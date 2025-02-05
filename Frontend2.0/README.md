@@ -48,20 +48,22 @@ my-app/
 ├── package.json
 ├── README.md
 
-Instalación
+```
+
+## Instalación
 Para clonar y ejecutar esta aplicación en tu máquina local, sigue estos pasos:
 
-Clona el repositorio:
+## Clona el repositorio:
 git clone https://github.com/tu-usuario/tu-repositorio.git
 
-Instala las dependencias:
+## Instala las dependencias:
 cd tu-repositorio
 npm install
 
-Inicia la aplicación:
+## Inicia la aplicación:
 npm start
 
-Uso
+## Uso
 La aplicación permite a los usuarios:
 
 Reportar mascotas perdidas.
@@ -70,7 +72,7 @@ Encontrar mascotas reportadas.
 
 Contactar con los propietarios de las mascotas.
 
-Scripts Disponibles
+## Scripts Disponibles
 En el directorio del proyecto, puedes ejecutar:
 
 npm start
@@ -93,7 +95,7 @@ Si no estás satisfecho con la herramienta de construcción y las opciones de co
 
 En su lugar, copiará todos los archivos de configuración y las dependencias transitivas (Webpack, Babel, ESLint, etc.) directamente en tu proyecto para que tengas el control total sobre ellos. Todos los comandos, excepto eject, seguirán funcionando, pero apuntarán a los scripts copiados para que puedas modificarlos.
 
-Estructura de Archivos
+## Estructura de Archivos
 public/: Archivos públicos, incluido el archivo index.html.
 
 src/: Código fuente de la aplicación.
@@ -118,51 +120,51 @@ reportWebVitals.js: Métricas de rendimiento.
 
 setupTests.js: Configuración de pruebas.
 
-Actualizaciones Recientes
+## Actualizaciones Recientes
 En esta actualización se han realizado varios cambios y mejoras significativas en el proyecto. A continuación, se detalla lo que se ha hecho:
 
-Estructura del Proyecto
+## Estructura del Proyecto
 Reorganización de la estructura de directorios:
 
 Se ha estructurado el proyecto en carpetas claras y coherentes para componentes reutilizables, formularios, páginas, contextos, hooks, servicios y estilos.
 
-Archivos y Componentes
+## Archivos y Componentes
 Renombrar Archivos a Pascal Case:
 
 Todos los nombres de archivos de componentes han sido renombrados a Pascal Case para seguir buenas prácticas.
 
-Importaciones Organizadas:
+## Importaciones Organizadas:
 
 Se organizaron y agruparon las importaciones en App.js para mejorar la legibilidad y el mantenimiento.
 
-Estilos CSS
+## Estilos CSS
 Separación de Estilos Globales y Específicos:
 
 Los estilos globales se han movido a index.css y los estilos específicos de componentes y páginas se han mantenido en styles.css.
 
-Uso de Variables de CSS:
+## Uso de Variables de CSS:
 
 Se han definido variables de CSS para colores y fuentes en :root para mejorar la consistencia y facilidad de mantenimiento.
 
-Optimización de Estilos:
+## Optimización de Estilos:
 
 Se han organizado y comentado los estilos CSS para mejorar la claridad y facilitar futuras modificaciones.
 
-Configuración y Archivos de Sistema
+## Configuración y Archivos de Sistema
 Configuración de reportWebVitals.js y setupTests.js:
 
 Se ha explicado el propósito de estos archivos y su uso para métricas de rendimiento y configuración de pruebas respectivamente.
 
-Documentación y README.md
+## Documentación y README.md
 Actualización del README.md:
 
 Se ha añadido una sección de estructura del proyecto, instrucciones de instalación y uso, y detalles sobre los scripts disponibles en el proyecto.
 
-Mejoras en la Documentación:
+## Mejoras en la Documentación:
 
 Documentación detallada de la estructura de archivos y el propósito de cada directorio y archivo importante.
 
-Scripts y Herramientas
+## Scripts y Herramientas
 Adición de Scripts en package.json:
 
 Se han añadido scripts útiles para la compilación, pruebas, linting y formateo del código.
