@@ -1,5 +1,6 @@
 package com.equipo_84.PetMap.service.UsuarioService;
 
+import com.equipo_84.PetMap.dto.ReporteDTO;
 import com.equipo_84.PetMap.dto.UsuarioDTO;
 import com.equipo_84.PetMap.entity.Usuario;
 
@@ -19,4 +20,6 @@ public interface IUsuarioService {
     Usuario createUsuario(Usuario usuario);
 
     String encriptPassword(String password);
+
+    List<ReporteDTO> reporteXusuario(Long id);
 }

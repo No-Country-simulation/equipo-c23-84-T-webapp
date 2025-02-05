@@ -1,8 +1,12 @@
 package com.equipo_84.PetMap.service.UsuarioService;
 
+import com.equipo_84.PetMap.dto.ReporteDTO;
 import com.equipo_84.PetMap.dto.UsuarioDTO;
+import com.equipo_84.PetMap.entity.Mascota;
+import com.equipo_84.PetMap.entity.Reporte;
 import com.equipo_84.PetMap.entity.Usuario;
 import com.equipo_84.PetMap.repository.IUsuarioRepository;
+import com.equipo_84.PetMap.util.Mappers.ReporteMapper;
 import com.equipo_84.PetMap.util.Mappers.UsuarioMapper;
 import com.equipo_84.PetMap.util.usuarioExceptions.UsuarioNotFoundException;
 import jakarta.transaction.Transactional;
@@ -10,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,6 +29,9 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
     @Autowired
     private UsuarioMapper usuarioMapper;
+
+    @Autowired
+    private ReporteMapper reporteMapper;
 
 
 
@@ -71,5 +80,18 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Override
     public String encriptPassword(String password) {
         return new BCryptPasswordEncoder().encode(password);
+    }
+
+    @Override
+    public List<ReporteDTO> reporteXusuario(Long id) {
+        Usuario usuario = usuarioRepository.findById(id).orElse(null);
+        List<Reporte> listaReportes=usuario.getReports();
+        List<ReporteDTO> listaReportesDTO=new ArrayList<ReporteDTO>();
+        for (Reporte reporte : listaReportes) {
+            ReporteDTO reporteDTO=reporteMapper.convertirAReporteDTO(reporte);
+            listaReportesDTO.add(reporteDTO);
+        }
+
+        return listaReportesDTO;
     }
 }
