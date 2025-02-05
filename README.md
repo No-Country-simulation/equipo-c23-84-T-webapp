@@ -14,7 +14,7 @@
 
 ## 🎯 Objetivo Principal
 
-El producto "PetMap" estará diseñado para facilitar la búsqueda de mascotas perdidas, reportar mascotas encontradas, y promover la adopción responsable. Además, permitirá la colaboración de voluntarios y de refugios para asistir en la localización y cuidado de mascotas.
+El producto "PetMap" estará diseñado para facilitar la búsqueda de mascotas perdidas y reportar mascotas encontradas. Además, permitirá la colaboración de voluntarios y de refugios para asistir en la localización y cuidado de mascotas.
 
 ---
 
@@ -22,7 +22,6 @@ El producto "PetMap" estará diseñado para facilitar la búsqueda de mascotas p
 
     • Facilitar la reunión de mascotas perdidas con sus dueños. 
     • Fomentar la colaboración entre usuarios para la localización y transporte de mascotas. 
-    • Promover la adopción responsable de mascotas. 
     • Proveer una experiencia intuitiva y accesible para todos los usuarios. 
 ---
 
@@ -30,17 +29,10 @@ El producto "PetMap" estará diseñado para facilitar la búsqueda de mascotas p
 
 | Front-End                                                                 | Back-End                                                                 | UX/UI                                                                 | QA                                                             |
 |---------------------------------------------------------------------------|--------------------------------------------------------------------------|-----------------------------------------------------------------------|--------------------------------------------------------------------|
-| ![typescript](https://img.shields.io/badge/TypeScript-%23007ACC?logo=typescript&logoColor=white) | ![springboot](https://img.shields.io/badge/Spring%20Boot-%236DB33F?logo=springboot&logoColor=white) | ![figma](https://img.shields.io/badge/Figma-%23424F5B?logo=figma&logoColor=white) | ![jira](https://img.shields.io/badge/Jira-%230A0F2D?logo=jira&logoColor=white) |
-| ![next.js](https://img.shields.io/badge/Next.js-%23000000?logo=next.js&logoColor=white) | ![postgresql](https://img.shields.io/badge/PostgreSQL-%23007599?logo=postgresql&logoColor=white) | ![storybook](https://img.shields.io/badge/Storybook-%23FF4785?logo=storybook&logoColor=white) |                                                                    |
-| ![tailwindcss](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC?logo=tailwindcss&logoColor=white) | ![jwt](https://img.shields.io/badge/JSON%20Web%20Tokens-%23000000?logo=json%20web%20tokens&logoColor=white) |                                                                       |                                                                    |
-| ![react-hook-form](https://img.shields.io/badge/React%20Hook%20Form-%2338B2AC?logo=react&logoColor=white) | ![docker](https://img.shields.io/badge/Docker-%232496ED?logo=docker&logoColor=white) |                                                                       |                                                                    |
-| ![zod](https://img.shields.io/badge/Zod-%23F24E1E?logo=zod&logoColor=white) | ![render](https://img.shields.io/badge/Render-%2300A2FF?logo=render&logoColor=white) |                                                                       |                                                                    |
-| ![tanstack-query](https://img.shields.io/badge/Tanstack%20Query-%23FF4777?logo=react-query&logoColor=white) | ![swagger](https://img.shields.io/badge/Swagger-%23000000?logo=swagger&logoColor=white) |                                                                       |                                                                    |
-| ![framer-motion](https://img.shields.io/badge/Framer%20Motion-%23000000?logo=framer&logoColor=white) | ![junit](https://img.shields.io/badge/JUnit-%23A8B9CC?logo=junit&logoColor=white) |                                                                       |                                                                    |
-| ![shadcn](https://img.shields.io/badge/Shadcn-%23B2F4B4?logo=shadcn&logoColor=white) | ![mockito](https://img.shields.io/badge/Mockito-%23E9E9E9?logo=mockito&logoColor=black) |                                                                       |                                                                    |
-| ![axios](https://img.shields.io/badge/Axios-%230072B1?logo=axios&logoColor=white) | ![sonarqube](https://img.shields.io/badge/SonarQube-%2300B5E2?logo=sonarqube&logoColor=white) |                                                                       |                                                                    |
-| ![cloudinary](https://img.shields.io/badge/Cloudinary-%23003E4D?logo=cloudinary&logoColor=white) | ![mvc](https://img.shields.io/badge/MVC-%23D6D6D6?logo=git&logoColor=black) |                                                                       |                                                                    |
-| ![sonner](https://img.shields.io/badge/Sonner-%23691E1E?logo=sonner&logoColor=white) |                                                                          |                                                                       |                                                                    |
+|  | ![springboot](https://img.shields.io/badge/Spring%20Boot-%236DB33F?logo=springboot&logoColor=white) | ![figma](https://img.shields.io/badge/Figma-%23424F5B?logo=figma&logoColor=white) |![libreofficecalc](https://img.shields.io/badge/libreofficecalc-007C3C?logo=libreofficecalc&logoColor=white) |
+|  | ![postgresql](https://img.shields.io/badge/PostgreSQL-%23007599?logo=postgresql&logoColor=white) | | |
+|  | ![render](https://img.shields.io/badge/Render-%2300A2FF?logo=render&logoColor=white) | | |
+| | ![junit](https://img.shields.io/badge/JUnit-%23A8B9CC?logo=junit&logoColor=white) |                                                                       |                                                                    |
 
 ---
 
@@ -50,33 +42,32 @@ El producto "PetMap" estará diseñado para facilitar la búsqueda de mascotas p
 
 | Nombre         | GitHub                                                                                          | LinkedIn                                                                                         |
 | -------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| Jeudy   | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/JeudyRobles) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jeudyrobles/) |
+| Jeudy Robles Padilla  | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/JeudyRobles) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jeudyrobles/) |
 
 📱 Front-End
 
 | Nombre         | GitHub                                                                                          | LinkedIn                                                                                         |
 | -------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| Magnolia| [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](#) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](#) |
-| Jeudy   | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/JeudyRobles) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jeudyrobles/) |
+| Jeudy Robles Padilla  | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/JeudyRobles) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jeudyrobles/) |
 
 💻 Back-End
 
 | Nombre         | GitHub                                                                                          | LinkedIn                                                                                         |
 | -------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| Nelson  | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/NMusto) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nelson-musto/) |
-| Ulises | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/UlisesRosales2004) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hugo-ulises-rosales-b96819290/) |
-| Gianmarco| [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/GianmarcoZodda) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gianmarcozodda/) |
+| Nelson Musto | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/NMusto) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nelson-musto/) |
+| Hugo Ulises Rosales | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/UlisesRosales2004) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hugo-ulises-rosales-b96819290/) |
+| Gianmarco ZOdda| [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/GianmarcoZodda) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gianmarcozodda/) |
 
 🔎 QA
 
 | Nombre         | GitHub                                                                                          | LinkedIn                                                                                         |
 | -------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| Dario  | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/DarioOliver) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dariooliververa/) |
+| Dario Oliver Vera  | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/DarioOliver) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dariooliververa/) |
 
 🦸‍♀️ Team Leader
 | Nombre      | GitHub                                                                                          | LinkedIn                                                                                         |
 | ----------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-|Gisele Ortiz| [!](#) |
+|Gisele Ortiz| [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/giseleortiz/GiseleOrtiz) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/giseleortiz/) |
 ---
 
 ## 🔗 Despliegue
