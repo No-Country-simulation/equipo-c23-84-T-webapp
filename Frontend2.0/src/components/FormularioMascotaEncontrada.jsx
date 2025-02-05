@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 
-const FormularioReportarMascota = () => {
+const FormularioMascotaEncontrada = () => {
     const [formData, setFormData] = useState({
         name: "",
         animal: "Perro",
         breed: "Desconocida",
-        age: "",
         color: "",
-        lostDate: "",
+        foundDate: "",
         phone: "",
         email: "",
         description: "",
@@ -31,16 +30,16 @@ const FormularioReportarMascota = () => {
     
     return (
         <div className="container py-5">
-          <h2 className="text-center">Te Ayudaremos A Encontrar A Tu Mascota</h2>
+          <h2 className="text-center fw-bold">Te ayudaremos a reunir a esta mascota con su dueño</h2>
           <p className="text-center text-muted">
-            Con nuestro servicio de geolocalización, encontrarás a tu mascota de manera rápida y eficiente.
+            Con nuestro servicio de geolocalización, encontrarás al dueño de la mascota de manera rápida y eficiente. Estamos aquí para ayudarte a reunir familias.
           </p>
           <div className="row mt-4">
             <div className="col-md-7">
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label className="form-label">Nombre de la mascota</label>
-                  <input type="text" className="form-control FormularioReportarMascota" name="name" value={formData.name} onChange={handleChange} required />
+                  <label className="form-label">Nombre de la mascota (opcional)</label>
+                  <input type="text" className="form-control FormularioReportarMascota" name="name" value={formData.name} onChange={handleChange} optional />
                 </div>
     
                 <div className="row">
@@ -53,8 +52,8 @@ const FormularioReportarMascota = () => {
                     </select>
                   </div>
                   <div className="col-md-6 mb-3">
-                    <label className="form-label">Edad</label>
-                    <input type="number" className="form-control FormularioReportarMascota" name="age" value={formData.age} onChange={handleChange} required />
+                    <label className="form-label">Raza (opcional)</label>
+                    <input type="text" className="form-control FormularioReportarMascota" name="breed" value={formData.breed} onChange={handleChange} optional />
                   </div>
                 </div>
     
@@ -65,11 +64,11 @@ const FormularioReportarMascota = () => {
     
                 <div className="row">
                   <div className="col-md-6 mb-3">
-                    <label className="form-label">Fecha de la pérdida</label>
-                    <input type="date" className="form-control FormularioReportarMascota" name="lostDate" value={formData.lostDate} onChange={handleChange} required />
+                    <label className="form-label">Fecha de encuentro</label>
+                    <input type="date" className="form-control FormularioReportarMascota" name="foundDate" value={formData.foundDate} onChange={handleChange} required />
                   </div>
                   <div className="col-md-6 mb-3">
-                    <label className="form-label">Última ubicación conocida</label>
+                    <label className="form-label">Ubicación</label>
                     <input type="text" className="form-control FormularioReportarMascota" name="location" value={formData.location} onChange={handleChange} required />
                   </div>
                 </div>
@@ -89,7 +88,7 @@ const FormularioReportarMascota = () => {
                   <input type="file" className="form-control FormularioReportarMascota" onChange={handleFileChange} accept=".png, .jpg, .jpeg" />
                 </div>
     
-                <button type="submit" className="btn btn-danger w-100">Reportar Mascota Perdida</button>
+                <button type="submit" className="btn btn-danger w-100">Reportar Mascota Encontrada</button>
               </form>
             </div>
     
@@ -108,4 +107,4 @@ const FormularioReportarMascota = () => {
       );
 };
 
-export default FormularioReportarMascota;
+export default FormularioMascotaEncontrada;

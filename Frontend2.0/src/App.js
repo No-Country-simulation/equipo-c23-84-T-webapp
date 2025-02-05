@@ -11,6 +11,9 @@ import Contacto from "./components/contacto";
 import AboutUs from "./components/sobreNosotros";
 import MascotaPerdida from "./components/mascotaPerdida";
 import FormularioReportarMascota from "./components/FormularioReportarMascota";
+import FormularioMascotaEncontrada from "./components/FormularioMascotaEncontrada";
+import PetDetails from "./components/pages/petDetails";
+import UserDashboard from "./components/pages/userDashboard";
 import Footer from "./components/footer";
 
 function App() {
@@ -90,6 +93,36 @@ function App() {
             <>
               <HeaderInicio />
               <FormularioReportarMascota />
+              <Footer/>
+            </>
+          }
+        />
+        <Route
+          path="/FormularioMascotaEncontrada"
+          element={
+            <>
+              <HeaderInicio />
+              <FormularioMascotaEncontrada />
+              <Footer/>
+            </>
+          }
+        />
+        <Route
+          path="/PetDetails"
+          element={
+            <>
+              <HeaderInicio />
+              <PetDetails />
+              <Footer/>
+            </>
+          }
+        />
+        <Route
+          path="/UserDashboard"
+          element={
+            <>
+              <HeaderInicio />
+              <UserDashboard />
               <Footer/>
             </>
           }

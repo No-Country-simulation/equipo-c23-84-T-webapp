@@ -25,7 +25,7 @@ const Header = () => {
                                 <a className="nav-link" href="/contacto">Contacto</a>
                             </li>
                         </ul>
-                        <button className="btn btn-outline-dark fw-bold btn-usuario" type="submit">Usuario</button>
+                        <a href="/UserDashboard"><button className="btn btn-outline-dark fw-bold btn-usuario" type="submit">Usuario</button></a>
                     </div>
                 </div>
             </nav>

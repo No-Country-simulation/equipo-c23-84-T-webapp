@@ -38,7 +38,7 @@ function App() {
 
             {/* Lista de mascotas */}
             <div>
-                <a href="">
+                <a href="/petDetails">
                     {filteredPets.length > 0 ? (
                     <div className="row">
                         {filteredPets.map((pet) => (
@@ -56,8 +56,8 @@ function App() {
                                 </p>
                                 <div>
                                     <h6>Compartir</h6>
-                                    <a href=""><img src="/assets/facebook-logo.svg" alt="" /></a>
-                                    <a href=""><img src="/assets/instagram-logo.svg" alt="" /></a>
+                                    <a href="#" className='social-a' aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i className="social-icon fab fa-facebook fa-2x"></i></a>
+                                    <a href="#" className='social-a' aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i className="social-icon fab fa-instagram fa-2x"></i></a>
                                 </div>
                             </div>
                             </div>

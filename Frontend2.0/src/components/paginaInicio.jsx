@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from './footer.jsx';
+import { Link } from 'react-router-dom';
 import "../css/styles.css";
 
 const PaginaInicio = () => {
@@ -13,8 +13,13 @@ const PaginaInicio = () => {
                     <div className="col-md-7 col-lg-6 text-md-start">
                         <h1 className="h1-paginaInicio">Bienvenido A Petmap, Donde Ayudamos A Reunir Mascotas Perdidas Con Su Familia.</h1>
                         <p className='p-paginaInicio'>Somos la plataforma líder para reunir a las mascotas perdidas con sus familias. Utiliza nuestra tecnología avanzada y nuestra comunidad solidaria para encontrar a tu amigo peludo lo más rápido posible. Juntos, haremos que cada cola vuelva a menearse y cada ronroneo vuelva a casa.</p>
-                        <a href="#" className="btn btn-danger me-2 mb-3">Reportar Mascota Perdida</a>
-                        <a href="#" className="btn btn-success mb-3">Reportar Mascota Encontrada</a>
+
+                        <Link to="/formularioreportarmascota">
+                            <button className='btn btn-danger me-2 mb-3'>Reportar Mascota Perdida</button>
+                        </Link>
+                        <Link to="/formulariomascotaencontrada">
+                            <button className='btn btn-success me-2 mb-3'>Reportar Mascota Encontrada</button>
+                        </Link>
                     </div>
                     <div className="col-md-5 col-lg-6"></div>
                 </div>
@@ -91,11 +96,15 @@ const PaginaInicio = () => {
                             <div className="container">
                                 <h2>Cómo involucrarse</h2>
                                 <p>¡Haz la diferencia! Ayuda a reunir a más mascotas con sus dueños participando en nuestra comunidad.</p>
-                                <div>
-                                    Facebook
+                                <div className='mt-3'>
+                                    <a href="#" className='social-a' aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i className="social-icon fab fa-facebook fa-2x"></i>&nbsp; &nbsp;Facebook</a>
                                 </div>
-                                <div>Instagram</div>
-                                <div>Twitter</div>
+                                <div className='mt-3'>
+                                    <a href="#" className='social-a' aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i className="social-icon fab fa-instagram fa-2x"></i>&nbsp; &nbsp;Instagram</a>
+                                </div>
+                                <div className='mt-3'>
+                                    <a href="#" className='social-a' aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i className="social-icon fab fa-twitter fa-2x"></i>&nbsp; &nbsp;Twitter</a>
+                                </div>
                                 <h2>Contactanos directamente</h2>
                                 <div>(123) 4567-8910</div>
                                 <div>help@petmap.com</div> 
