@@ -27,7 +27,7 @@ function App() {
         }
 
         // Hacer la solicitud a la API con el token en las cabeceras
-        const response = await fetch('/reportes/traer', {
+        const response = await fetch('https://apipetmap.onrender.com/reportes/traer', {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
