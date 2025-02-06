@@ -15,11 +15,19 @@ const ContactForm = () => {
     e.preventDefault();
     const { name, email, message } = formData;
 
+    /*
     // Construir el mailto
     const mailtoLink = `mailto:equipoc2384@gmail.com?subject=Consulta de ${encodeURIComponent(name)}&body=Nombre: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0A%0AMensaje:%0A${encodeURIComponent(message)}`;
 
     // Redirigir al enlace
     window.location.href = mailtoLink;
+    */
+
+    // Construir la URL de redacción de Gmail (no uso mailito, porque me redirige a outlook)
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=equipoc2384@gmail.com&su=Consulta de ${encodeURIComponent(name)}&body=Nombre: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0A%0AMensaje:%0A${encodeURIComponent(message)}`;
+
+    // Abrir en una nueva pestaña de Chrome
+    window.open(gmailLink, "_blank");
   };
 
   return (
