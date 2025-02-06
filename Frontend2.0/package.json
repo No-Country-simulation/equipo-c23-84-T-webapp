@@ -44,8 +44,6 @@
     "resolve-url-loader": {
       "postcss": "8.4.45"
     }
-  },
-
-  "proxy": "https://apipetmap.onrender.com"
+  }
 
 }
