@@ -1,148 +1,194 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import MapFilter from '../../components/MapFilter';
 
-function App() {
+const MascotaPerdida = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [pets, setPets] = useState([]); // Estado para almacenar los datos de la API
-  const [loading, setLoading] = useState(true); // Estado para manejar la carga
-  const [error, setError] = useState(null); // Estado para manejar errores
+  const [pets, setPets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [filters, setFilters] = useState({
+    especie: '',
+    raza: '',
+    tipoReporte: '',
+  });
+  const [locationFilter, setLocationFilter] = useState(null); // Coordenadas seleccionadas en el mapa
+  const [selectedRadius, setSelectedRadius] = useState(20); // Radio de búsqueda en km
 
-  // Función para obtener los datos de la API
+  // Función para calcular la distancia entre dos coordenadas (fórmula de Haversine)
+  const calculateDistance = (lat1, lon1, lat2, lon2) => {
+    const toRadians = (degrees) => degrees * (Math.PI / 180);
+    const R = 6371; // Radio de la Tierra en km
+    const dLat = toRadians(lat2 - lat1);
+    const dLon = toRadians(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  };
+
+  // Obtener las mascotas desde la API
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        // Obtener el token JWT del localStorage
         const token = localStorage.getItem('jwtToken');
+        if (!token) throw new Error('No se encontró el token de autenticación');
 
-        if (!token) {
-          throw new Error('No se encontró el token de autenticación');
-        }
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        const expirationDate = new Date(payload.exp * 1000);
+        if (new Date() > expirationDate) throw new Error('Token expirado');
 
-        // Verificar si el token ha expirado
-        const payload = JSON.parse(atob(token.split('.')[1])); // Decodificar el payload del token
-        const expirationDate = new Date(payload.exp * 1000); // Convertir a fecha legible
-        const now = new Date();
-
-        if (now > expirationDate) {
-          throw new Error('El token ha expirado. Por favor, inicia sesión nuevamente.');
-        }
-
-        // Hacer la solicitud a la API con el token en las cabeceras
         const response = await fetch('https://apipetmap.onrender.com/reportes/traer', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
+          headers: { Authorization: `Bearer ${token}` }
         });
 
-        // Verificar si la respuesta es válida
-        if (!response.ok) {
-          const errorText = await response.text();
-          throw new Error(`Error al obtener los datos: ${response.status} ${response.statusText}`);
-        }
-
-        // Parsear la respuesta como JSON
+        if (!response.ok) throw new Error(`Error ${response.status}`);
         const data = await response.json();
-        setPets(data); // Guardar los datos en el estado
+        setPets(data);
       } catch (error) {
-        setError(error.message); // Guardar el mensaje de error
+        setError(error.message);
       } finally {
-        setLoading(false); // Finalizar la carga
+        setLoading(false);
       }
     };
-
     fetchPets();
   }, []);
 
-  // Filtrar mascotas según el término de búsqueda
-  const filteredPets = pets.filter((pet) =>
-    pet.nombreMascota.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Filtros combinados
+  const filteredPets = pets.filter(pet => {
+    const matchesSearch = pet.nombreMascota.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesEspecie = !filters.especie || pet.especieMascota === filters.especie;
+    const matchesRaza = !filters.raza || pet.razaMascota === filters.raza;
+    const matchesTipo = !filters.tipoReporte || pet.tipoReporte === filters.tipoReporte;
 
-  // Mostrar un mensaje de carga o error
-  if (loading) {
-    return <p className="text-center">Cargando...</p>;
-  }
+    // Filtro de ubicación con mapa
+    let matchesLocation = true;
+    if (locationFilter && pet.ubicacionReporte) {
+      const [petLat, petLon] = pet.ubicacionReporte.split(',').map(Number);
+      const distance = calculateDistance(locationFilter.lat, locationFilter.lng, petLat, petLon);
+      matchesLocation = distance <= selectedRadius; // Usa el radio seleccionado
+    }
 
-  if (error) {
-    return (
-      <p className="text-center">
-        Error: {error}. <a href="/login">Inicia sesión nuevamente</a>.
-      </p>
-    );
-  }
+    return matchesSearch && matchesEspecie && matchesRaza && matchesTipo && matchesLocation;
+  });
+
+  if (loading) return <p className="text-center">Cargando...</p>;
+  if (error) return <p className="text-center">Error: {error}. <a href="/login">Iniciar sesión</a></p>;
 
   return (
-    <div>
-      <div className="container mt-5">
-        <h1 className="text-center mb-4">Base de Datos de Búsqueda de Mascotas Perdidas</h1>
-        <p className="text-center">
-          Consulta nuestra base de datos de mascotas perdidas para encontrar a tu compañero peludo.
-        </p>
+    <div className="container mt-5">
+      <h1 className="text-center mb-4">Base de Datos de Mascotas Perdidas</h1>
 
-        {/* Campo de búsqueda */}
-        <div className="mb-4">
-          <input
-            type="text"
-            className="form-control form-control-petData"
-            placeholder="Buscar mascota por nombre..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+      {/* Filtros de búsqueda */}
+      <div className="mb-4">
+        <input
+          type="text"
+          className="form-control mb-2"
+          placeholder="Buscar por nombre..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+
+        <div className="row g-2 mb-3">
+          {/* Filtro de especie */}
+          <div className="col-md-3">
+            <select
+              className="form-control"
+              value={filters.especie}
+              onChange={(e) => setFilters({ ...filters, especie: e.target.value })}
+            >
+              <option value="">Todas las especies</option>
+              {[...new Set(pets.map(p => p.especieMascota))].map((especie, i) => (
+                <option key={i} value={especie}>{especie}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Filtro de raza */}
+          <div className="col-md-3">
+            <select
+              className="form-control"
+              value={filters.raza}
+              onChange={(e) => setFilters({ ...filters, raza: e.target.value })}
+            >
+              <option value="">Todas las razas</option>
+              {[...new Set(pets.map(p => p.razaMascota))].map((raza, i) => (
+                <option key={i} value={raza}>{raza}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Filtro de tipo de reporte */}
+          <div className="col-md-3">
+            <select
+              className="form-control"
+              value={filters.tipoReporte}
+              onChange={(e) => setFilters({ ...filters, tipoReporte: e.target.value })}
+            >
+              <option value="">Todos los reportes</option>
+              {['PERDIDA', 'HALLAZGO'].map((tipo, i) => (
+                <option key={i} value={tipo}>{tipo}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Input para el radio personalizado */}
+          <div className="col-md-3">
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Radio en km"
+              value={selectedRadius}
+              onChange={(e) => setSelectedRadius(Number(e.target.value))}
+              min="1"
+            />
+          </div>
         </div>
 
-        {/* Lista de mascotas */}
-        <div>
-          {filteredPets.length > 0 ? (
-            <div className="row">
-              {filteredPets.map((pet) => (
-                <div key={pet.idReporte} className="col-md-4 mb-4">
-                  <div className="card">
-                    <img
-                      src={pet.urlFotoMascota}
-                      className="card-img-top"
-                      alt={pet.nombreMascota}
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">{pet.nombreMascota}</h5>
-                      <h6>{pet.fechaReporte}</h6>
-                      <p className="card-text">
-                        Tipo: {pet.especieMascota} <br />
-                        Raza: {pet.razaMascota} <br />
-                        Ubicación: {pet.ubicacionReporte}
-                      </p>
-                      <div>
-                        <h6>Compartir</h6>
-                        <a
-                          href="#"
-                          className="social-a"
-                          aria-label="Facebook"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <i className="social-icon fab fa-facebook fa-2x"></i>
-                        </a>
-                        <a
-                          href="#"
-                          className="social-a"
-                          aria-label="Instagram"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <i className="social-icon fab fa-instagram fa-2x"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-center">No se encontraron mascotas.</p>
+        {/* Mapa interactivo */}
+        <div className="mb-4">
+          <h5>Selecciona ubicación en el mapa (radio: {selectedRadius} km):</h5>
+          <MapFilter onLocationSelect={setLocationFilter} selectedLocation={locationFilter} />
+          {locationFilter && (
+            <button
+              className="btn btn-danger mt-2"
+              onClick={() => setLocationFilter(null)}
+            >
+              Quitar filtro de ubicación
+            </button>
           )}
         </div>
       </div>
+
+      {/* Listado de mascotas */}
+      <div className="row">
+        {filteredPets.length > 0 ? (
+          filteredPets.map(pet => (
+            <div key={pet.idReporte} className="col-md-4 mb-4">
+              <div className="card h-100">
+                <img src={pet.urlFotoMascota} className="card-img-top" alt={pet.nombreMascota} />
+                <div className="card-body">
+                  <h5 className="card-title">
+                    <Link to={`/pet/${pet.idReporte}`} className="text-decoration-none">
+                      {pet.nombreMascota}
+                    </Link>
+                  </h5>
+                  <p className="card-text">
+                    <small className="text-muted">{pet.fechaReporte}</small><br />
+                    Especie: {pet.especieMascota}<br />
+                    Raza: {pet.razaMascota}<br />
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="text-center">No se encontraron mascotas.</p>
+        )}
+      </div>
     </div>
   );
-}
+};
 
-export default App;
+export default MascotaPerdida;
