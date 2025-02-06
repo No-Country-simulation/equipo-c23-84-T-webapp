@@ -1,32 +1,30 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [pets, setPets] = useState([]); // Estado para almacenar los datos de la API
-  const [loading, setLoading] = useState(true); // Estado para manejar la carga
-  const [error, setError] = useState(null); // Estado para manejar errores
+  const [pets, setPets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Hook para navegar
 
-  // Función para obtener los datos de la API
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        // Obtener el token JWT del localStorage
         const token = localStorage.getItem('jwtToken');
 
         if (!token) {
           throw new Error('No se encontró el token de autenticación');
         }
 
-        // Verificar si el token ha expirado
-        const payload = JSON.parse(atob(token.split('.')[1])); // Decodificar el payload del token
-        const expirationDate = new Date(payload.exp * 1000); // Convertir a fecha legible
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        const expirationDate = new Date(payload.exp * 1000);
         const now = new Date();
 
         if (now > expirationDate) {
           throw new Error('El token ha expirado. Por favor, inicia sesión nuevamente.');
         }
 
-        // Hacer la solicitud a la API con el token en las cabeceras
         const response = await fetch('https://apipetmap.onrender.com/reportes/traer', {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -34,31 +32,27 @@ function App() {
           },
         });
 
-        // Verificar si la respuesta es válida
         if (!response.ok) {
           const errorText = await response.text();
           throw new Error(`Error al obtener los datos: ${response.status} ${response.statusText}`);
         }
 
-        // Parsear la respuesta como JSON
         const data = await response.json();
-        setPets(data); // Guardar los datos en el estado
+        setPets(data);
       } catch (error) {
-        setError(error.message); // Guardar el mensaje de error
+        setError(error.message);
       } finally {
-        setLoading(false); // Finalizar la carga
+        setLoading(false);
       }
     };
 
     fetchPets();
   }, []);
 
-  // Filtrar mascotas según el término de búsqueda
   const filteredPets = pets.filter((pet) =>
     pet.nombreMascota.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Mostrar un mensaje de carga o error
   if (loading) {
     return <p className="text-center">Cargando...</p>;
   }
@@ -79,7 +73,6 @@ function App() {
           Consulta nuestra base de datos de mascotas perdidas para encontrar a tu compañero peludo.
         </p>
 
-        {/* Campo de búsqueda */}
         <div className="mb-4">
           <input
             type="text"
@@ -90,13 +83,12 @@ function App() {
           />
         </div>
 
-        {/* Lista de mascotas */}
         <div>
           {filteredPets.length > 0 ? (
             <div className="row">
               {filteredPets.map((pet) => (
                 <div key={pet.idReporte} className="col-md-4 mb-4">
-                  <div className="card">
+                  <div className="card" onClick={() => navigate(`/pet/${pet.idReporte}`)} style={{ cursor: 'pointer' }}>
                     <img
                       src={pet.urlFotoMascota}
                       className="card-img-top"

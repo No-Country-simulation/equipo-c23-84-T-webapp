@@ -1,52 +1,86 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const PetDetails = () => {
+  const { id } = useParams(); // Obtener el ID de la mascota de la URL
+  const [pet, setPet] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPetDetails = async () => {
+      try {
+        const token = localStorage.getItem('jwtToken');
+
+        if (!token) {
+          throw new Error('No se encontró el token de autenticación');
+        }
+
+        const response = await fetch(`https://apipetmap.onrender.com/reportes/traer/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Error al obtener los datos: ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        setPet(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPetDetails();
+  }, [id]);
+
+  if (loading) {
+    return <p className="text-center">Cargando...</p>;
+  }
+
+  if (error) {
+    return (
+      <p className="text-center">
+        Error: {error}. <a href="/login">Inicia sesión nuevamente</a>.
+      </p>
+    );
+  }
+
+  if (!pet) {
+    return <p className="text-center">No se encontró la mascota.</p>;
+  }
+
   return (
     <div className="container py-5">
       <div className="row">
         <div className="col-md-6">
           <img
-            src="https://cdn.pixabay.com/photo/2022/04/24/16/46/dog-7154045_640.jpg"
-            alt="Mascota Perdida"
+            src={pet.urlFotoMascota}
+            alt={pet.nombreMascota}
             className="img-fluid rounded"
           />
         </div>
         <div className="col-md-6">
-          <p className="text-muted">Mascota &nbsp; | &nbsp; Perro &nbsp; | &nbsp; Perdido</p>
-          <h2 className="fw-bold">Hachiko</h2>
-          <p>Juan Reporto esta mascota</p>
-          <p><strong>29/11/2024</strong></p>
+          <p className="text-muted">Mascota &nbsp; | &nbsp; {pet.especieMascota} &nbsp; | &nbsp; Perdido</p>
+          <h2 className="fw-bold">{pet.nombreMascota}</h2>
+          <p>{pet.nombreUsuario} reportó esta mascota</p>
+          <p><strong>{pet.fechaReporte}</strong></p>
           <ul>
-            <li>Sexo: Masculino</li>
-            <li>Años: 1</li>
-            <li>Raza: Desconocida</li>
+            <li>Raza: {pet.razaMascota}</li>
+            <li>Descripción: {pet.descripcionMascota}</li>
           </ul>
-          <p>
-            Un Shiba Inu de pelaje rojizo, hocico negro y orejas puntiagudas.
-          </p>
-          <button className="btn btn-success w-100 mb-3">Reportar Como Mascota Encontrada</button>
           <p className="fw-bold">Ayuda a compartir en tus redes</p>
           <div>
-            <button className="btn btn-light me-2"><i class="fa-brands fa-facebook"></i> Facebook</button>
-            <button className="btn btn-light me-2"><i class="fa-brands fa-instagram"></i> Twitter</button>
-            <button className="btn btn-light"><i class="fa-brands fa-twitter"></i> Instagram</button>
+            <button className="btn btn-light me-2"><i className="fa-brands fa-facebook"></i> Facebook</button>
+            <button className="btn btn-light me-2"><i className="fa-brands fa-instagram"></i> Twitter</button>
+            <button className="btn btn-light"><i className="fa-brands fa-twitter"></i> Instagram</button>
           </div>
-        </div>
-      </div>
-      <div className="row mt-5">
-        <div className="col-md-4">
-          <img
-            src="https://cdn.pixabay.com/photo/2018/01/17/00/46/shiba-inu-3087207_640.jpg"
-            alt="Mascota 1"
-            className="img-fluid rounded"
-          />
-        </div>
-        <div className="col-md-4">
-          <img
-            src="https://cdn.pixabay.com/photo/2018/09/30/22/04/dog-breed-3714812_640.jpg"
-            alt="Mascota 2"
-            className="img-fluid rounded"
-          />
         </div>
       </div>
     </div>

@@ -1,35 +1,29 @@
 import React, { useState, useEffect } from "react";
 
 const UserDashboard = () => {
-  const [user, setUser] = useState({
-    name: "Juan Pérez",
-    email: "juanperez@gmail.com",
-  });
-
+  const [userName, setUserName] = useState("");
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Función para obtener los reportes del usuario
   useEffect(() => {
     const fetchUserReports = async () => {
       try {
-        // Obtener el token JWT del localStorage
         const token = localStorage.getItem('jwtToken');
 
         if (!token) {
           throw new Error('No se encontró el token de autenticación');
         }
 
-        // Decodificar el token para obtener el ID del usuario
         const payload = JSON.parse(atob(token.split('.')[1]));
-        const userId = payload.userId; // Asume que el ID del usuario está en el payload del token
+        const userId = payload.userId;
 
-        if (!userId) {
-          throw new Error('No se pudo obtener el ID del usuario');
-        }
+        // Extraer directamente el nombre de usuario
+        const usernameMatch = payload.sub.match(/Username=([^,]+)/);
+        const extractedUsername = usernameMatch ? usernameMatch[1] : 'Usuario';
+        
+        setUserName(extractedUsername);
 
-        // Hacer la solicitud a la API con el token en las cabeceras
         const response = await fetch(`https://apipetmap.onrender.com/reportes/usuario/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -37,33 +31,25 @@ const UserDashboard = () => {
           },
         });
 
-        // Verificar si la respuesta es válida
         if (!response.ok) {
-          const errorText = await response.text();
-          throw new Error(`Error al obtener los datos: ${response.status} ${response.statusText}`);
+          throw new Error(`Error al obtener los datos: ${response.status}`);
         }
 
-        // Parsear la respuesta como JSON
         const data = await response.json();
-        setReports(data); // Guardar los datos en el estado
+        setReports(data);
       } catch (error) {
-        setError(error.message); // Guardar el mensaje de error
+        setError(error.message);
       } finally {
-        setLoading(false); // Finalizar la carga
+        setLoading(false);
       }
     };
 
     fetchUserReports();
   }, []);
 
-  // Función para eliminar un reporte
   const handleDeleteReport = async (reportId) => {
     try {
       const token = localStorage.getItem('jwtToken');
-
-      if (!token) {
-        throw new Error('No se encontró el token de autenticación');
-      }
 
       const response = await fetch(`https://apipetmap.onrender.com/reportes/borrar/${reportId}`, {
         method: 'DELETE',
@@ -74,39 +60,23 @@ const UserDashboard = () => {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Error al eliminar el reporte: ${response.status} ${response.statusText}`);
+        throw new Error(`Error al eliminar el reporte: ${response.status}`);
       }
 
-      // Actualizar la lista de reportes después de eliminar
       setReports(reports.filter(report => report.idReporte !== reportId));
     } catch (error) {
       setError(error.message);
     }
   };
 
-  if (loading) {
-    return <p className="text-center">Cargando...</p>;
-  }
-
-  if (error) {
-    return (
-      <p className="text-center">
-        Error: {error}. <a href="/login">Inicia sesión nuevamente</a>.
-      </p>
-    );
-  }
+  if (loading) return <p className="text-center">Cargando...</p>;
+  if (error) return <p className="text-center">Error: {error}</p>;
 
   return (
     <div className="container py-5">
       <h2 className="fw-bold">Dashboard del Usuario</h2>
       <div className="card p-4 mb-4">
-        <div className="d-flex align-items-center">
-          <div>
-            <h4>{user.name}</h4>
-            <p className="text-muted">{user.email}</p>
-          </div>
-        </div>
+        <h4>{userName}</h4>
       </div>
 
       <h3 className="fw-bold">Tus Reportes</h3>

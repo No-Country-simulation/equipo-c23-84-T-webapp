@@ -114,7 +114,7 @@ function App() {
           }
         />
         <Route
-          path="/PetDetails"
+          path="/pet/:id" // Ruta con parámetro dinámico :id
           element={
             <>
               <HeaderInicio />
