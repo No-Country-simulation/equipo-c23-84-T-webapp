@@ -20,23 +20,23 @@ El producto "PetMap" estará diseñado para facilitar la búsqueda de mascotas p
 
 ## ✨ Funcionalidades Principales de PetMap
 
-    • Facilitar la reunión de mascotas perdidas con sus dueños. 
-    • Fomentar la colaboración entre usuarios para la localización y transporte de mascotas. 
-    • Proveer una experiencia intuitiva y accesible para todos los usuarios. 
+    • Facilitar la reunión de mascotas perdidas con sus dueños.
+    • Fomentar la colaboración entre usuarios para la localización y transporte de mascotas.
+    • Proveer una experiencia intuitiva y accesible para todos los usuarios.
 ---
 
 ## 🛠️ Tecnologías
 
 | Front-End                                                                 | Back-End                                                                 | UX/UI                                                                 | QA                                                             |
 |---------------------------------------------------------------------------|--------------------------------------------------------------------------|-----------------------------------------------------------------------|--------------------------------------------------------------------|
-|  | ![springboot](https://img.shields.io/badge/Spring%20Boot-%236DB33F?logo=springboot&logoColor=white) | ![figma](https://img.shields.io/badge/Figma-%23424F5B?logo=figma&logoColor=white) |![libreofficecalc](https://img.shields.io/badge/libreofficecalc-007C3C?logo=libreofficecalc&logoColor=white) |
-|  | ![postgresql](https://img.shields.io/badge/PostgreSQL-%23007599?logo=postgresql&logoColor=white) | | |
-|  | ![render](https://img.shields.io/badge/Render-%2300A2FF?logo=render&logoColor=white) | | |
-| | ![junit](https://img.shields.io/badge/JUnit-%23A8B9CC?logo=junit&logoColor=white) |                                                                       |                                                                    |
+| ![javascript](https://img.shields.io/badge/JavaScript-%23F7DF1E?logo=javascript&logoColor=black) | ![java](https://img.shields.io/badge/Java-%23ED8B00?logo=java&logoColor=white) | ![figma](https://img.shields.io/badge/Figma-%23424F5B?logo=figma&logoColor=white) |![libreofficecalc](https://img.shields.io/badge/libreofficecalc-007C3C?logo=libreofficecalc&logoColor=white) |
+| ![html](https://img.shields.io/badge/HTML5-%23E34F26?logo=html5&logoColor=white) | ![springboot](https://img.shields.io/badge/Spring%20Boot-%236DB33F?logo=springboot&logoColor=white) | | |
+| ![css](https://img.shields.io/badge/CSS3-%231572B6?logo=css3&logoColor=white) | ![postgresql](https://img.shields.io/badge/PostgreSQL-%23007599?logo=postgresql&logoColor=white) | | |
+| ![react](https://img.shields.io/badge/React-%2361DAFB?logo=react&logoColor=black) | ![render](https://img.shields.io/badge/Render-%2300A2FF?logo=render&logoColor=white) | | |
 
 ---
 
-## 🧑‍🤝‍🧑 Equipo
+## 🧑‍🤝 Equipo
 
 🎨 UX/UI
 
@@ -64,7 +64,7 @@ El producto "PetMap" estará diseñado para facilitar la búsqueda de mascotas p
 | -------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | Dario Oliver Vera  | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/DarioOliver) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dariooliververa/) |
 
-🦸‍♀️ Team Leader
+🥸️ Team Leader
 | Nombre      | GitHub                                                                                          | LinkedIn                                                                                         |
 | ----------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 |Gisele Ortiz| [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/giseleortiz/GiseleOrtiz) | [![LinkedIn](https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/giseleortiz/) |
@@ -77,13 +77,4 @@ Puedes ver la versión desplegada del **Front-End** en el siguiente enlace:
 
 https://equipo-c23-84-t-webapp.onrender.com
 
----
-## 📸 Vista Previa de la Aplicación
-| Pantalla 1 | Pantalla 2 |
-|------------|------------|
-| ![Pantalla 1](#) | ![Pantalla 2](#) |
-
-| Pantalla 3 | Pantalla 4 |
-|------------|------------|
-| ![Pantalla 3](#) | ![Pantalla 4](#) |
 
