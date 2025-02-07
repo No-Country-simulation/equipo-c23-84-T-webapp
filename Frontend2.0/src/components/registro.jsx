@@ -27,7 +27,7 @@ const Registro = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://apipetmap.onrender.com/usuarios/create', {
+            const response = await fetch("http://localhost:8080/usuarios/create", {     //http://apipetmap.onrender.com/usuarios/create
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -40,6 +40,7 @@ const Registro = () => {
             if (!response.ok) {
                 throw new Error('Error')
             } else {
+                window.location.href = "/login";
                 setFormData(initialFormData);
             }
         } catch (error) {
@@ -78,7 +79,7 @@ const Registro = () => {
                         className="form-control" id="email" placeholder="Ingrese su correo electrónico"/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="password" className="form-label"> Contraseña nueva </label>
+                    <label htmlFor="password" className="form-label"> Contraseña </label>
                     <input 
                         type="password" 
                         name='password'
