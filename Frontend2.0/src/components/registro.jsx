@@ -27,7 +27,7 @@ const Registro = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:8080/usuarios/create", {     //http://apipetmap.onrender.com/usuarios/create
+            const response = await fetch("https://apipetmap.onrender.com/usuarios/create", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
