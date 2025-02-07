@@ -1,0 +1,203 @@
+/* Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* Variables de CSS */
+:root {
+  --text: #2c3e50;
+  --background: #F5F5F5;
+  --primary: #FF8C42;
+  --secondary: #66CDAA;
+  --accent: #fa4c4c;
+  --black: #000;
+}
+
+/* Reset de estilos HTML5 para navegadores más antiguos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1.5;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Estilos globales */
+body {
+  margin: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Estilos para enlaces */
+a {
+  text-decoration: none; /* Quita el subrayado */
+  color: inherit; /* Hereda el color del elemento padre */
+  background: none; /* Quita cualquier fondo */
+  border: none; /* Quita cualquier borde */
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none; /* Asegura que no se subraye en estado hover, focus o active */
+  color: inherit; /* Hereda el color también en estos estados */
+  color: var(--accent);
+}
+
+/* Estilos base para encabezados */
+h1 {
+  font-size: 3.062rem;
+  font-weight: 700; /* Bold */
+}
+
+h2 {
+  font-size: 2.438rem;
+  font-weight: 600; /* Semi Bold */
+}
+
+h3 {
+  font-size: 1.938rem;
+  font-weight: 500; /* Medium */
+}
+
+h4 {
+  font-size: 1.562rem;
+  font-weight: 600; /* Semi Bold */
+}
+
+/* Estilos para párrafos */
+p {
+  font-size: 1rem;
+  font-weight: 400; /* Regular */
+}
+
+a:hover {
+  color: var(--background);
+}/* Variables de CSS */
+:root {
+  --text: #2c3e50;
+  --background: #F5F5F5;
+  --primary: #FF8C42;
+  --secondary: #66CDAA;
+  --accent: #fa4c4c;
+  --black: #000;
+}
+
+/* Reset de estilos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1.5;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Estilos para enlaces */
+a {
+  text-decoration: none;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+  color: var(--accent);
+}
+
+/* Estilos base para encabezados */
+h1 {
+  font-size: 3.062rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.438rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.938rem;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 1.562rem;
+  font-weight: 600;
+}
+
+/* Estilos para párrafos */
+p {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
