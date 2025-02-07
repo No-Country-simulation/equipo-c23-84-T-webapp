@@ -1,6 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Registro = () => {
+
+
+    const initialFormData = {
+        username: '',
+        correo: '',
+        password: '',
+        roles: [
+        {
+            "id":2
+        }
+    ]
+    };
+
+    const [formData, setFormData] = useState(initialFormData);
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://apipetmap.onrender.com/usuarios/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error('Error')
+            } else {
+                setFormData(initialFormData);
+            }
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+
+
   return (
     <div>
         <section className="hero position-relative text-center">
@@ -8,20 +56,35 @@ const Registro = () => {
             <div className="overlay"></div>
             <div className="content position-absolute top-50 start-50 translate-middle d-flex flex-column justify-content-center align-items-center ">
                 <h1 className="">Registrarse</h1>
-                <form className="formulario-registro p-2 rounded text-start" style={{ maxWidth: "400px", opacity: 0.9 }}>
+                <form onSubmit={handleSubmit} className="formulario-registro p-2 rounded text-start" style={{ maxWidth: "400px", opacity: 0.9 }}>
                 <div className="mb-3">
                     <label htmlFor="username" className="form-label">
                     Nombre de usuario
                     </label>
-                    <input type="text" className="form-control" id="username" placeholder="Ingrese su nombre de usuario"/>
+                    <input 
+                        type="text" 
+                        name='username'
+                        value={FormData.username}
+                        onChange={handleChange}
+                        className="form-control" id="username" placeholder="Ingrese su nombre de usuario"/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label"> Correo electrónico </label>
-                    <input type="email" className="form-control" id="email" placeholder="Ingrese su correo electrónico"/>
+                    <input 
+                        type="email" 
+                        name='correo'
+                        value={FormData.correo}
+                        onChange={handleChange}
+                        className="form-control" id="email" placeholder="Ingrese su correo electrónico"/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label"> Contraseña nueva </label>
-                    <input type="password" className="form-control" id="password" placeholder="Ingrese su contraseña"/>
+                    <input 
+                        type="password" 
+                        name='password'
+                        value={FormData.password}
+                        onChange={handleChange}
+                        className="form-control" id="password" placeholder="Ingrese su contraseña"/>
                 </div>
                 <button type="submit" className="btn btn-custom w-100"> Crear cuenta </button>
                 <p className="text-center mt-3">O</p>
