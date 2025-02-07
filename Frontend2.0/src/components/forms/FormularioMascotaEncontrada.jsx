@@ -88,7 +88,7 @@ const FormularioMascotaEncontrada = () => {
             const formDataWithUserId = { ...formData, idUsuario: userId }; 
             
             try {
-              const response = await fetch('http://localhost:8080/reportes/crear', {      //http://apipetmap.onrender.com/reportes/crear
+              const response = await fetch('https://apipetmap.onrender.com/reportes/crear', { 
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
