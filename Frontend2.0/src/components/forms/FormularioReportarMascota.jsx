@@ -4,8 +4,8 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const FormularioReportarMascota = () => {
 
-    const cloud_name = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
-    const preset_name = process.env.REACT_APP_CLOUDINARY_PRESET_NAME;
+    const cloud_name = "dcapyxmud";
+    const preset_name = "ja274ixty";
     const googleMapsApiKey = "AIzaSyBe13Fyguf2fFjpe2EtDCan36tmwjznnOQ";
 
     const [mapCenter, setMapCenter] = useState({ lat: -34.6037, lng: -58.3816 }); // Coordenadas de Buenos Aires por defecto
