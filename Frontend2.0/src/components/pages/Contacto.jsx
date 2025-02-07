@@ -22,7 +22,7 @@ const Contacto = () => {
                     <div className="row d-flex justify-content-center alig-intems-center">
                         <div className="col-lg-6 col-md-12">
                             <h2>Póngase en contacto</h2>
-                            <p>Avenida Ficticia 456, Barrio Imaginario, Buenos Aires, Argentina</p>
+                            <p>Avenida Alberdi 456, Buenos Aires, Argentina</p>
                             <p>+54 11 1234 5678</p>
                             <p>support@petmap.com</p>
 
