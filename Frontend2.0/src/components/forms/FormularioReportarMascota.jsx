@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
@@ -9,6 +9,12 @@ const FormularioReportarMascota = () => {
 
   const [mapCenter, setMapCenter] = useState({ lat: -34.6037, lng: -58.3816 });
   const [markerPosition, setMarkerPosition] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [isReportSuccess, setIsReportSuccess] = useState(false);
+  const [isUnnamedPet, setIsUnnamedPet] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [formData, setFormData] = useState({
     nombreMascota: "",
@@ -25,12 +31,10 @@ const FormularioReportarMascota = () => {
     correoUsuario: "juanperez@gmail.com",
   });
 
-  // Estado para manejar las razas disponibles según la especie seleccionada
   const [razasDisponibles, setRazasDisponibles] = useState([]);
 
-  // Mapeo de especies y sus respectivas razas
   const especiesYRazas = {
-    Perro: ["Labrador", "Pastor Alemán", "Bulldog Francés", "Golden Retriever", "Chihuahua", "Poodle", "Beagle", "Rottweiler", "Boxer", "Dálmata", "Otra"],
+    Perro: ["Labrador", "Pastor Alemán", "Bulldog Francés", "Golden Retriever", "Chihuahua", "Poodle", "Beagle", "Rottweiler", "Boxer", "Dálmata", "Collie", "Otra"],
     Gato: ["Siamés", "Persa", "Maine Coon", "Bengalí", "Ragdoll", "Esfinge", "British Shorthair", "Abisinio", "Birmano", "Siberiano", "Otra"],
     Ave: ["Canario", "Periquito", "Cacatúa", "Guacamayo", "Loro", "Otra"],
     Roedor: ["Hámster", "Cobaya", "Chinchilla", "Rata", "Ratón", "Otra"],
@@ -38,13 +42,27 @@ const FormularioReportarMascota = () => {
     Otra: ["Otra"]
   };
 
+  useEffect(() => {
+    const isFilled =
+      (isUnnamedPet || formData.nombreMascota.trim() !== "") &&
+      formData.especieMascota.trim() !== "" &&
+      formData.razaMascota.trim() !== "" &&
+      formData.descripcionMascota.trim() !== "" &&
+      formData.fechaReporte.trim() !== "" &&
+      formData.fechaReporte <= new Date().toISOString().split('T')[0] &&
+      formData.ubicacionReporte.trim() !== "" &&
+      formData.contacto.trim() !== "" &&
+      formData.urlFotoMascota.trim() !== "";
+
+    setIsFormValid(isFilled);
+  }, [formData, isUnnamedPet]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
     if (name === "especieMascota") {
       setRazasDisponibles(especiesYRazas[value] || []);
-      // Reiniciamos la raza al cambiar la especie
       setFormData((prevState) => ({ ...prevState, razaMascota: "" }));
     }
   };
@@ -65,6 +83,7 @@ const FormularioReportarMascota = () => {
     data.append("file", files[0]);
     data.append("upload_preset", preset_name);
 
+    setIsLoading(true);
     try {
       const response = await fetch(
         `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
@@ -76,52 +95,63 @@ const FormularioReportarMascota = () => {
 
       const file = await response.json();
       const image = file.secure_url;
-      setFormData((prevState) => ({
-        ...prevState,
-        urlFotoMascota: image,
-      }));
+      setTimeout(() => {
+        setFormData((prevState) => ({
+          ...prevState,
+          urlFotoMascota: image,
+        }));
+        setIsLoading(false);
+      }, 5000);
     } catch (error) {
       console.log("Error uploading: ", error);
+      setIsLoading(false);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    if (!isFormValid) return;
 
     const token = localStorage.getItem("jwtToken");
     if (!token) {
       throw new Error("No se encontró el token de autenticación");
     }
 
+    setIsSubmitting(true);
+    setErrorMessage("");
+
     try {
       const decodedToken = jwtDecode(token);
       const userId = decodedToken.userId || decodedToken.sub;
-      console.log(userId);
 
       const formDataWithUserId = { ...formData, idUsuario: userId };
 
-      try {
-        const response = await fetch("https://apipetmap.onrender.com/reportes/crear", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formDataWithUserId),
-        });
+      if (isUnnamedPet) {
+        formDataWithUserId.nombreMascota = "Sin nombre";
+      }
 
-        const result = await response.json();
-        window.location.href = "/paginainicio";
+      const response = await fetch("https://apipetmap.onrender.com/reportes/crear", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formDataWithUserId),
+      });
 
-        if (!response.ok) {
-          throw new Error("Error");
-        }
-      } catch (error) {
-        console.error(error.message);
+      if (response.ok) {
+        setIsReportSuccess(true);
+        setTimeout(() => {
+          window.location.href = "/paginainicio";
+        }, 2000);
+      } else {
+        throw new Error("Error al enviar el reporte");
       }
     } catch (error) {
-      console.error("Error al decodificar el token: ", error);
+      console.error(error.message);
+      setErrorMessage("No se pudo crear el reporte. Por favor, inténtalo de nuevo.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -144,7 +174,20 @@ const FormularioReportarMascota = () => {
                 value={formData.nombreMascota}
                 onChange={handleChange}
                 required
+                disabled={isUnnamedPet}
               />
+              <div className="form-check mt-2">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="unnamedPet"
+                  checked={isUnnamedPet}
+                  onChange={(e) => setIsUnnamedPet(e.target.checked)}
+                />
+                <label className="form-check-label" htmlFor="unnamedPet">
+                  La mascota no tiene nombre
+                </label>
+              </div>
             </div>
 
             <div className="row">
@@ -155,6 +198,7 @@ const FormularioReportarMascota = () => {
                   name="especieMascota"
                   value={formData.especieMascota}
                   onChange={handleChange}
+                  required
                 >
                   <option value="">Elegir especie...</option>
                   {Object.keys(especiesYRazas).map((especie, index) => (
@@ -191,6 +235,7 @@ const FormularioReportarMascota = () => {
                 name="descripcionMascota"
                 value={formData.descripcionMascota}
                 onChange={handleChange}
+                required
               ></textarea>
             </div>
 
@@ -203,6 +248,7 @@ const FormularioReportarMascota = () => {
                   name="fechaReporte"
                   value={formData.fechaReporte}
                   onChange={handleChange}
+                  max={new Date().toISOString().split('T')[0]}
                   required
                 />
               </div>
@@ -229,6 +275,7 @@ const FormularioReportarMascota = () => {
                 name="contacto"
                 value={formData.contacto}
                 onChange={handleChange}
+                required
               />
             </div>
 
@@ -239,11 +286,17 @@ const FormularioReportarMascota = () => {
                 className="form-control FormularioReportarMascota"
                 onChange={(e) => uploadImage(e)}
                 accept=".png, .jpg, .jpeg"
+                required
               />
+              {isLoading && (
+                <div className="spinner-border text-primary mt-2" role="status">
+                  <span className="visually-hidden">Subiendo imagen...</span>
+                </div>
+              )}
             </div>
 
-            <button type="submit" className="btn btn-danger w-100">
-              Reportar Mascota Perdida
+            <button type="submit" className="btn btn-danger w-100" disabled={!isFormValid || isLoading || isSubmitting}>
+              {isSubmitting ? "Enviando reporte..." : "Reportar Mascota Perdida"}
             </button>
           </form>
         </div>
@@ -284,6 +337,16 @@ const FormularioReportarMascota = () => {
           </div>
         </div>
       </div>
+      {isReportSuccess && (
+        <div className="alert alert-success" role="alert">
+          ¡Reporte registrado con éxito!
+        </div>
+      )}
+      {errorMessage && (
+        <div className="alert alert-danger" role="alert">
+          {errorMessage}
+        </div>
+      )}
     </div>
   );
 };
