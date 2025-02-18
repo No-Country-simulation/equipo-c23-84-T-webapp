@@ -55,8 +55,15 @@ const MascotaPerdida = () => {
     fetchPets();
   }, []);
 
+  // Ordenar las mascotas por fecha (más recientes primero)
+  const sortedPets = [...pets].sort((a, b) => {
+    const dateA = new Date(a.fechaReporte);
+    const dateB = new Date(b.fechaReporte);
+    return dateB - dateA; // Orden descendente
+  });
+
   // Filtros combinados
-  const filteredPets = pets.filter(pet => {
+  const filteredPets = sortedPets.filter(pet => {
     const matchesSearch = pet.nombreMascota.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesEspecie = !filters.especie || pet.especieMascota === filters.especie;
     const matchesRaza = !filters.raza || pet.razaMascota === filters.raza;
